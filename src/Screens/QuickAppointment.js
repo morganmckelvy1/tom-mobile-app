@@ -176,7 +176,7 @@ const QuickAppointment = props => {
         <TomLoader />
       ) : (
         <SafeAreaView
-          style={{flex: 1, backgroundColor: globalColor.BACKGROUND}}>
+          style={{flex: 1, backgroundColor: globalColor.GREY}}>
           <Header
             title={'Quick Appointment'}
             leftIcon={null}
@@ -223,20 +223,18 @@ const QuickAppointment = props => {
               </View>
             )}
           </View>
-          <TouchableOpacity
+          <TouchableOpacity style={{
+                position: 'absolute',
+                zIndex: 1,
+                left: WidthPercent(80),
+                bottom: HeightPercent(5),}}
             onPress={() => {
               pressRightTextIcon();
             }}>
             <AntDesign
               name="pluscircle"
               size={WidthPercent(12)}
-              style={{
-                position: 'absolute',
-                zIndex: 1,
-                color: globalColor.CARD,
-                left: WidthPercent(70),
-                bottom: HeightPercent(5),
-              }}
+              style={{color:globalColor.CARD}}
             />
           </TouchableOpacity>
         </SafeAreaView>

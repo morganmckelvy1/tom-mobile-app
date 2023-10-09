@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Alert} from 'react-native';
 import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
@@ -51,7 +52,7 @@ export const LoginApi =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('login err', err.response.data.message);
+      console.log('login err------', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -83,7 +84,8 @@ export const forgotpasswordresetlink =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('login err', err.response.data.message);
+      Alert.alert( err.response.data.message)
+      console.log('login err------', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -110,7 +112,8 @@ export const resetPasswordAction =
         email: emailToken,
       };
       const resePassword = await axios.post(
-        BASEURL + '/create-new-password-reset',
+        // BASEURL + '/create-new-password-reset',
+        BASEURL + '/password-reset-link', 
         sendData,
       );
       if (resePassword) {

@@ -59,9 +59,10 @@ const Header = props => {
             // width:WidthPercent(100),
             color: globalColor.WHITE,
             fontSize:
-              Platform.OS == 'android' ? HeightPercent(2.5) : HeightPercent(2),
+              Platform.OS == 'android' ? HeightPercent(3.5) : HeightPercent(3),
             textAlign: 'center',
             flex: 1,
+            fontWeight:'700'
           }}>
           {props.title}
         </Text>

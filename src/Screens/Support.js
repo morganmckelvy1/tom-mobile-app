@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {View,Text,TextInput,Alert} from 'react-native';
+import {View,Text,TextInput,Alert, ScrollView} from 'react-native';
 import Header from '../Components/Header';
 import * as globalColor from '../Global/color';
 import { HeightPercent,WidthPercent } from '../Global/device';
@@ -78,30 +78,30 @@ const Support= props =>{
                 rightTextIcon="SEND"
                 pressRightTextIcon={pressRightTextIcon}
             />
-            <View style={{flex: 1}}>
-                <View style={{
-                    marginTop:40,
-                    width:WidthPercent(80),
-                    height:HeightPercent(20),
-                    marginLeft:39,
-                    marginRight:68
-                    }}>
+
+            <ScrollView>       
+
+            <View style={{flex: 1, paddingHorizontal:WidthPercent(5),backgroundColor:'transparent' }}>
+             
                     <Text style={{
+                         marginTop:HeightPercent(4),
                         opacity: 1,
                         fontSize:14,
                         lineHeight:18,
                         }}>"Welcome to support! Have questions, comments, or concerns? You have been assigned a personal support agent that will be able to help you with whatever you need.</Text>
+                  
                     <Text style={{
                         marginTop:20,
                         fontSize:14,
                         }}> The Tom CMS Team"
                     </Text>
 
-                    <Text style={{marginTop:50,fontSize:12,color:globalColor.LIGHTGREY}}>SUBJECT</Text>
+                    <Text style={{marginTop:HeightPercent(3),marginLeft:WidthPercent(1),fontSize:15,fontWeight:'bold'}}>SUBJECT:</Text>
+                    
                     <TextInput 
                         placeholder="Welcome to support"
-                        placeholderTextColor={globalColor.BLACK}
-                        style={{fontSize:14,marginTop:5}}
+                        placeholderTextColor={globalColor.LIGHTGREY1}
+                        style={{fontSize:14,marginTop:HeightPercent(2), paddingLeft:WidthPercent(3),borderWidth:1,borderColor:globalColor.LIGHTGREY, borderRadius:WidthPercent(2)}}
                         value={topic}
                         multiline={true}
                         onChangeText={text => {
@@ -109,38 +109,35 @@ const Support= props =>{
                           }}
                     />
                    
-                </View>
 
-
-                <View style={{
-                        width:WidthPercent(100),
-                        height:1,
-                        backgroundColor:globalColor.LIGHTGREY,
-                        marginTop:35,
-                        marginBottom:15,
-                    }}
-                />
-                <View style={{
+                {/* <View style={{
                     width:WidthPercent(80),
                     height:HeightPercent(20),
                     marginLeft:39,
                     marginRight:68,
-                    marginTop:20
+                    marginTop:20,
+                    // backgroundColor:'green'
                     }}>
-                    
+                     */}
                     <TextInput 
-                        placeholder="BODY"
-                        style={{fontSize:15}}
-                        value={message}
+                        placeholder="Body"
+                        placeholderTextColor={globalColor.LIGHTGREY1}
                         multiline={true}
+                        style={{fontSize:14,height:HeightPercent(22),alignItems:'flex-start' ,marginTop:HeightPercent(3), paddingLeft:WidthPercent(3),borderWidth:1,borderColor:globalColor.LIGHTGREY, borderRadius:WidthPercent(2)}}
+                        value={message}
                         onChangeText={text => {
                             setMessage(text);
                           }}
                     />
                        
-                </View>
+                {/* </View> */}
+
+                <View style={{height:HeightPercent(10)}}/>
                 
             </View>
+
+            </ScrollView>
+
             </SafeAreaView>
         </>
     )

@@ -23,6 +23,7 @@ const TomTextInput = props => {
       <View style={styles.textInputLeftImg}>
         <MaterialIcons name={props.leftIcon} size={WidthPercent(6.6)} />
       </View>
+
       <TextInput
         placeholder={props.placeholder}
         placeholderTextColor={globalColor.LIGHTGREY}
@@ -37,6 +38,7 @@ const TomTextInput = props => {
         // value={props.value && props.value}
         //onSubmitEditing={(event) => props.onSubmit(event)}
       />
+
       {props.rightIcon && (
         <TouchableOpacity
           style={{margin: 10}}
@@ -49,6 +51,8 @@ const TomTextInput = props => {
           />
         </TouchableOpacity>
       )}
+
+      
     </View>
   );
 };

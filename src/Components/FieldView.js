@@ -24,8 +24,9 @@ function FieldView(props) {
           flex: 1,
           textAlign: 'left',
           alignSelf: 'flex-start',
+          paddingLeft:WidthPercent(1),
           fontSize: WidthPercent(props.fontSize ? props.fontSize : 3),
-          color: globalColor.LIGHTGREY,
+          color: globalColor.LIGHTGREY1,
         }}>
         {props.field}
       </Text>

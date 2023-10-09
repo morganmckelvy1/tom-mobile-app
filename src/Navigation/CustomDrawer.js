@@ -35,7 +35,11 @@ const CustomDrawer = props => {
   }, [UserprofileDetails]);
   return (
     <View style={{flex: 1}}>
-      <View style={{flex: 0.5, backgroundColor: globalColor.BLACK}}>
+      <View style={{flex: 0.5,
+        //  backgroundColor: globalColor.BLACK
+         backgroundColor:'#47153f'
+         
+         }}>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Image
             style={{
@@ -56,7 +60,7 @@ const CustomDrawer = props => {
               alignItems: 'center',
               marginTop: HeightPercent(2),
             }}>
-            <Text style={{fontSize: WidthPercent(5), color: globalColor.WHITE}}>
+            <Text numberOfLines={1} style={{width:WidthPercent(50),fontSize: WidthPercent(5), color: globalColor.WHITE}}>
               {userInfo.name}
             </Text>
             <Text
@@ -70,7 +74,7 @@ const CustomDrawer = props => {
           </View>
         </View>
       </View>
-      <ScrollView style={{flex: 2, backgroundColor: '#202020'}}>
+      <ScrollView style={{flex: 2, backgroundColor: '#ccc'}}>
         <DrawerItem src={profileIcon} name="Profile" {...props} />
         <DrawerItem src={ContactIcon} name="Contacts" {...props} />
         <DrawerItem src={appointmentIcon} name="QuickAppointment" {...props} />

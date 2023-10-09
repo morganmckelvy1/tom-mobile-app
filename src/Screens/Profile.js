@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback, useRef} from 'react';
 import {
   View,
   StatusBar,
@@ -29,6 +29,8 @@ import FieldView from '../Components/FieldView';
 import TomLoader from '../Components/tomLoader';
 
 import RNOtpVerify from 'react-native-otp-verify';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+
 const Profile = props => {
   const {UserprofileDetails, profileupdatestatus, error} = props;
   const [userInfo, setUserInfo] = useState('');
@@ -54,7 +56,7 @@ const Profile = props => {
     rrpLink: null,
     video_tutorial: null,
   });
-  const [playingVideo, setplayingVideo] = useState({status: null, id: null});
+  const [playingVideo, setplayingVideo] = useState({status: false, id: null});
   const [profileLoading, setprofileLoading] = useState(true);
   const [profileEditStatus, setprofileEditStatus] = useState(false);
   useEffect(() => {
@@ -155,6 +157,22 @@ const Profile = props => {
       id: null,
     });
   };
+
+  const [playing, setPlaying] = useState(false);
+
+  const togglePlaying = useCallback(() => {
+
+         setPlaying((prev) => !prev);
+
+        //  console.log('toggle palying--------', playingVideo);
+
+        //  setplayingVideo({status: !playingVideo.status ,  
+        //   id: userAllDetails.video_tutorial.split('/')[4]
+        // }); 
+
+    }, []);
+
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar
@@ -170,8 +188,9 @@ const Profile = props => {
             style={{
               flex: 1,
               backgroundColor: globalColor.CARD,
-              paddingBottom: Platform.OS == 'android' ? HeightPercent(3) : null,
+              paddingBottom: Platform.OS == 'android' ? HeightPercent(15) : null,
             }}>
+
             <Header
               title={null}
               leftIcon={null}
@@ -185,12 +204,14 @@ const Profile = props => {
             />
             <View
               style={{
-                flex: 1,
+                // flex: 1,
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 alignItems: 'center',
-                padding: 10,
+                // padding: 10,
                 // marginLeft:WidthPercent(5)
+                // backgroundColor:'red',
+                // height:HeightPercent(15)
               }}>
               <Image
                 style={{
@@ -214,9 +235,8 @@ const Profile = props => {
                     : require('../Assests/Images/profile.png')
                 }
               />
-              <View style={{marginLeft: WidthPercent(5)}}>
-                <Text
-                  style={{fontSize: WidthPercent(5), color: globalColor.WHITE}}>
+              <View style={{marginLeft: WidthPercent(1), width:WidthPercent(55)}}>
+                <Text numberOfLines={1} style={{textAlign:'left', fontSize: WidthPercent(5), color: globalColor.WHITE}}>
                   {`${userAllDetails.firstName}${
                     ' ' + userAllDetails.lastName
                   }`}
@@ -227,52 +247,71 @@ const Profile = props => {
                     color: globalColor.WHITE,
                     marginRight: 1,
                     maxHeight: HeightPercent(7),
+                    marginBottom:HeightPercent(1.5)
                   }}>
                   {userAllDetails.email}
                 </Text>
-                <TouchableOpacity
+
+
+                {/* <TouchableOpacity
                   style={{
                     backgroundColor: globalColor.WHITE,
                     // height: HeightPercent(5),
                     padding:
                       Platform.OS == 'android'
-                        ? HeightPercent(2)
+                        ? HeightPercent(1.2)
                         : HeightPercent(1.5),
-                    width: WidthPercent(40),
+                    width: WidthPercent(45),
                     justifyContent: 'center',
                     alignItems: 'center',
                     borderRadius: WidthPercent(6),
-                    marginVertical: 5,
+                    // marginVertical: 5,
+                    flexDirection:'row'
                   }}
-                  onPress={() => {
-                    setplayingVideo({
-                      status: !playingVideo.status,
-                      id: userAllDetails.video_tutorial.split('/')[4],
-                    });
-                  }}>
-                  <Text style={{textAlign: 'center', color: globalColor.BLACK}}>
-                    {playingVideo.status ? 'Close Video' : 'TUTORIAL VIDEO'}
+                  onPress={() => {                       
+                    {console.log('playingVideo----------- ', playingVideo)}
+                    // if(playingVideo && playingVideo.status)                    
+                    setplayingVideo({...playingVideo, status: !playingVideo.status, id: userAllDetails.video_tutorial.split('/')[4]});                                
+                  }}
+                  // onPress={togglePlaying}
+                  >
+
+
+                   <Image style={{width:WidthPercent(3), height:HeightPercent(3), marginRight:WidthPercent(2)}} resizeMode={'contain'} 
+                     source={playingVideo.status? require('../Assests/Images/cross.png'): require('../Assests/Images/playButton.png')}
+                   /> 
+                  
+                  <Text style={{textAlign: 'center', color: globalColor.BLACK, fontSize:WidthPercent(3.2), fontWeight:'bold'}}>
+                    {playingVideo.status? 'CLOSE VIDEO' : 'TUTORIAL VIDEO'}
                   </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
-          <View style={{flex: 3, padding: HeightPercent(2)}}>
-            {playingVideo.status ? (
+          <View style={{flex: 3, backgroundColor:'#ccc', padding: HeightPercent(2)}}>
+            {/* {playingVideo.status? (
               <View style={{flex: 1}}>
+
                 <YoutubePlayer
                   height={HeightPercent(50)}
-                  play={true}
+                  play={playingVideo.status}                 
                   videoId={playingVideo.id}
+                  // play={playing}
+                  // videoId={"kUWvv9yLKb8"}
                   // onChangeState={onStateChange}
                 />
               </View>
-            ) : (
-              <ScrollView style={{flex: 1}}>
+            ) : ( */}
+
+            <View  style={{height:HeightPercent(71), width:WidthPercent(95), alignSelf:'center',top:HeightPercent(-7), position:'absolute'}}>
+
+              <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:globalColor.WHITE}}>
+
                 <FieldView
                   field={'ON CALL PHONE NUMBER'}
                   value={userAllDetails.oncall1}
                 />
+
                 {userAllDetails.dop_phone?.length > 0 &&
                   userAllDetails.dop_phone.map((item, index) => {
                     return (
@@ -325,21 +364,44 @@ const Profile = props => {
                 />
                 <FieldView field={'RRP LINK'} value={userAllDetails.rrpLink} />
                 <FieldView field={'USERNAME'} value={userAllDetails.userName} />
-              </ScrollView>
-            )}
-            <TouchableOpacity
-              style={{bottom: 1, padding: HeightPercent(1)}}
-              onPress={() => {
-                props.navigation.navigate('ChangePassword', {
-                  userInfo: userInfo,
-                });
-                props.clearchangePasswordStatus();
-              }}>
-              <Text
-                style={{color: globalColor.PRIMARY, fontSize: WidthPercent(5)}}>
-                CHANGE PASSWORD
-              </Text>
-            </TouchableOpacity>
+
+
+
+                <TouchableOpacity
+                  style={{
+                    height:
+                      Platform.OS == 'android' ? HeightPercent(6) : HeightPercent(4),
+                    width: WidthPercent(80),
+                    borderRadius: 10,
+                    marginTop: HeightPercent(3),
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf:'center',
+                    marginBottom:HeightPercent(4),
+                    backgroundColor: globalColor.GOLD,
+                  }}
+                  onPress={() => {
+                    props.navigation.navigate('ChangePassword', {
+                      userInfo: userInfo,
+                    });
+                    props.clearchangePasswordStatus();
+                  }}
+                  
+                  >
+                  <Text
+                    style={{color: globalColor.BLACK, fontWeight:'700', fontSize: WidthPercent(3.5)}}>
+                    CHANGE PASSWORD
+                  </Text>
+                </TouchableOpacity>
+
+                </ScrollView>
+
+            </View>
+
+           
+
+            {/* )} */}
+           
           </View>
         </>
       ) : (

@@ -203,10 +203,10 @@ const ForgotPassword = props => {
             <TouchableOpacity
               style={{
                 justifyContent: 'center',
-                backgroundColor: globalColor.PRIMARY,
+                backgroundColor: globalColor.BTNCOLOR,
                 borderRadius: 5,
                 width: !sendResetMail ? WidthPercent(35) : WidthPercent(70),
-                height:Platform.OS=='android'? HeightPercent(7):HeightPercent(5),
+                height:Platform.OS=='android'? HeightPercent(6):HeightPercent(5),
 
               }}
               onPress={() => {
@@ -214,9 +214,9 @@ const ForgotPassword = props => {
               }}>
               <Text
                 style={{
-                  color: globalColor.WHITE,
+                  color: globalColor.BLACK,
                   textAlign: 'center',
-                  fontSize: WidthPercent(4),
+                  fontSize: WidthPercent(3.5),
                 }}>
                 Reset Password
               </Text>
@@ -229,7 +229,7 @@ const ForgotPassword = props => {
                   borderColor: '#2c3334',
                   borderRadius: 5,
                   width: WidthPercent(35),
-                  height:Platform.OS=='android'? HeightPercent(7):HeightPercent(5),
+                  height:Platform.OS=='android'? HeightPercent(6):HeightPercent(5),
                 }}
                 onPress={() => {
                   props.navigation.navigate('Login');
@@ -238,7 +238,7 @@ const ForgotPassword = props => {
                   style={{
                     color: globalColor.BLACK,
                     textAlign: 'center',
-                    fontSize: WidthPercent(4),
+                    fontSize: WidthPercent(3.5),
                   }}>
                   Back to login
                 </Text>

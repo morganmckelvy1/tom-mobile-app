@@ -31,11 +31,13 @@ const Login = props => {
   const [changeicon, setchangeicon] = useState(false);
 
   const {userInfo, isAuthenticated, error, show_message} = props;
+  
   useEffect(() => {
     if (error.id === 'LOGIN_FAIL' && !isAuthenticated) {
       Alert.alert(error.message);
     }
   }, [ error]);
+
   useEffect(() => {
     getData();
   }, []);
@@ -46,6 +48,7 @@ const Login = props => {
   const passwordValidation = (a, b) => {
     setpassword_txt(b);
   };
+  
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('token');
@@ -61,6 +64,7 @@ const Login = props => {
       console.log('getToken error', e);
     }
   };
+
   const storeData = async (key, value) => {
     try {
       await AsyncStorage.setItem(key, value);
@@ -69,6 +73,7 @@ const Login = props => {
       console.log('token store error', e);
     }
   };
+
   const logInFunc = async () => {
     try {
       if (email_phone_txt.length > 5 && password_txt.length > 5) {
@@ -102,13 +107,15 @@ const Login = props => {
         //   props.navigation.navigate('Dashboard');
         // }
       } else {
-        Alert.alert('email and password should be at least 6 digit');
+        Alert.alert('Email and password should be at least 6 digit');
       }
     } catch (error) {
       console.error('error', error);
       Alert.alert('Wrong email or password.');
     }
   };
+
+  
   return (
     <View
       style={{
@@ -190,10 +197,10 @@ const Login = props => {
             <TouchableOpacity
               style={{
                 justifyContent: 'center',
-                backgroundColor: globalColor.PRIMARY,
+                backgroundColor: globalColor.BTNCOLOR,
                 borderRadius: 5,
                 width: WidthPercent(35),
-                padding:Platform.OS=='android'? HeightPercent(2):HeightPercent(1.5)
+                padding:Platform.OS=='android'? HeightPercent(1.6):HeightPercent(1.5)
                 // height:Platform.OS=='android'? HeightPercent(7):HeightPercent(5),
               }}
               onPress={() => {
@@ -201,7 +208,7 @@ const Login = props => {
               }}>
               <Text
                 style={{
-                  color: globalColor.WHITE,
+                  color: globalColor.BLACK,
                   textAlign: 'center',
                   fontSize: WidthPercent(5),
                 }}>
