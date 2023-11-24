@@ -42,7 +42,9 @@ export const LoginApi =
         device_token: generatedToken,
         time_zone: timeZone,
       };
+      console.log(sendData);
       const userLogin = await axios.post(BASEURL + '/login', sendData);
+      console.log(userLogin);
       if (userLogin) {
         console.log('login true');
         dispatch({

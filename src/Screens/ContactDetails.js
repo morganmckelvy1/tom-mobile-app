@@ -16,7 +16,8 @@ import {
 } from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 import {connect} from 'react-redux';
-import RNFetchBlob from 'rn-fetch-blob';
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob
 import DatePicker from 'react-native-date-picker';
 
 import ContactEdit from '../Components/ContactCreateEdit';
