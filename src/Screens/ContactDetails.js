@@ -16,7 +16,8 @@ import {
 } from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 import {connect} from 'react-redux';
-import RNFetchBlob from 'rn-fetch-blob';
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob
 import DatePicker from 'react-native-date-picker';
 
 import ContactEdit from '../Components/ContactCreateEdit';
@@ -602,7 +603,7 @@ function ContactDetails(props) {
                   <Text
                     style={{
                       fontSize: WidthPercent(4),
-                      color: globalColor.BLACK,
+                      color: globalColor.WHITE,
                     }}>
                     Edit Contact
                   </Text>
@@ -704,7 +705,7 @@ function ContactDetails(props) {
                     <Text
                       style={{
                         fontSize: WidthPercent(4),
-                        color: globalColor.BLACK,
+                        color: globalColor.WHITE,
                       }}>
                       Send Feedback
                     </Text>
@@ -729,7 +730,7 @@ function ContactDetails(props) {
                     <Text
                       style={{
                         fontSize: WidthPercent(4),
-                        color: globalColor.BLACK,
+                        color: globalColor.WHITE,
                       }}>
                       Campaign List
                     </Text>

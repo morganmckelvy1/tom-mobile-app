@@ -156,7 +156,7 @@ const QuickAppointment = props => {
               justifyContent: 'center',
               paddingHorizontal: WidthPercent(2),
             }}>
-            <AntDesign name="right" size={20} color={globalColor.BLACK} />
+            <AntDesign name="right" size={20} color={globalColor.NEWTHEME} />
           </TouchableOpacity>
         </View>
       </View>
@@ -234,7 +234,7 @@ const QuickAppointment = props => {
             <AntDesign
               name="pluscircle"
               size={WidthPercent(12)}
-              style={{color:globalColor.CARD}}
+              style={{color:globalColor.NEWTHEME}}
             />
           </TouchableOpacity>
         </SafeAreaView>

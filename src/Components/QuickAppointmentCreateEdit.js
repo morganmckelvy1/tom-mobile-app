@@ -430,7 +430,7 @@ function QuickAppointmentCreateEdit(props) {
                     <Text
                       style={{
                         fontSize: WidthPercent(4),
-                        color: globalColor.BLACK,
+                        color: globalColor.WHITE,
                       }}>
                       {props.type == 'Edit'
                         ? 'Save Changes'
@@ -496,7 +496,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: WidthPercent(5),
     borderTopLeftRadius: WidthPercent(1),
-    color: globalColor.CARD,
+    color: globalColor.NEWTHEME,
     fontSize: WidthPercent(4),
     fontWeight: 'bold',
   },
@@ -507,7 +507,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     padding: WidthPercent(5),
     borderTopRightRadius: WidthPercent(1),
-    color: globalColor.CARD,
+    color: globalColor.NEWTHEME,
     fontSize: WidthPercent(4),
     fontWeight: 'bold',
   },

@@ -26,7 +26,6 @@ export const getAppointmentList =
         },
       );
       if (appointmentList) {
-        console.log('fetched appointmentList data', appointmentList.data.data);
         dispatch({
           type: GETAPPOINTMENTSUCCESS,
           payload: appointmentList.data.data,
@@ -34,7 +33,6 @@ export const getAppointmentList =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('appointmentList err', err.response.data);
       if (err.response.status == 401) {
         dispatch(logoutAction({user_id}));
 
@@ -76,7 +74,6 @@ export const searchAppointmentcontact =
         },
       );
       if (searchedContact) {
-        console.log('fetched searchedContact data', searchedContact.status);
         dispatch({
           type: SEARCHCONTACTAPPOINTMENTSUCCESS,
           payload: searchedContact.data.data,
@@ -84,7 +81,6 @@ export const searchAppointmentcontact =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('searchedContact err', err.response.data);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -127,7 +123,6 @@ export const createAppointment =
         },
       );
       if (createAppointment) {
-        console.log(' createAppointment data', createAppointment.data.data);
         dispatch({
           type: CREATEAPPOINTMENTSUCCESS,
           payload: createAppointment.data.message,
@@ -135,7 +130,6 @@ export const createAppointment =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('createAppointment err', err.response.data);
       alert('Please fill all fields');
       if (err.response.status == 401) {
         dispatch(logoutAction({user_id}));
@@ -181,7 +175,6 @@ export const editAppointment =
         },
       );
       if (editAppointment) {
-        console.log(' editAppointment data', editAppointment.data.data);
         dispatch({
           type: EDITAPPOINTMENTSUCCESS,
           payload: editAppointment.data.message,
@@ -189,7 +182,6 @@ export const editAppointment =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('editAppointment err', err.response.data);
       if (err.response.status == 401) {
         dispatch(logoutAction({user_id}));
 
@@ -235,7 +227,6 @@ export const deleteAppointment =
         },
       );
       if (deleteAppointmentData) {
-        console.log('deleted APPOINTMENT ', deleteAppointmentData.data);
         dispatch({
           type: DELETEAPPOINTMENTSUCCESS,
           payload: deleteAppointmentData.data.data,
@@ -243,7 +234,6 @@ export const deleteAppointment =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('deleteAppointmentData err', err.response.data);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(

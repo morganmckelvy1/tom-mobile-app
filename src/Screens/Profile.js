@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import {connect} from 'react-redux';
-
+import LinearGradient from 'react-native-linear-gradient';
 import * as globalColor from '../Global/color';
 import {HeightPercent, WidthPercent} from '../Global/device';
 import {userDetails} from '../Global/userDetails';
@@ -62,7 +62,6 @@ const Profile = props => {
   useEffect(() => {
     const backAction = () => {
       BackHandler.exitApp();
-
       return true;
     };
     const backHandler = BackHandler.addEventListener(
@@ -109,9 +108,7 @@ const Profile = props => {
       setprofileLoading(false);
     }
   }, [UserprofileDetails]);
-  useEffect(()=>{
-// getotp();
-  },[]);
+
 
 
   const getotp=async()=>{
@@ -187,10 +184,9 @@ const Profile = props => {
           <View
             style={{
               flex: 1,
-              backgroundColor: globalColor.CARD,
+              backgroundColor: globalColor.NEWTHEME,
               paddingBottom: Platform.OS == 'android' ? HeightPercent(15) : null,
             }}>
-
             <Header
               title={null}
               leftIcon={null}
@@ -288,6 +284,8 @@ const Profile = props => {
               </View>
             </View>
           </View>
+
+          
           <View style={{flex: 3, backgroundColor:'#ccc', padding: HeightPercent(2)}}>
             {/* {playingVideo.status? (
               <View style={{flex: 1}}>
@@ -378,7 +376,7 @@ const Profile = props => {
                     alignItems: 'center',
                     alignSelf:'center',
                     marginBottom:HeightPercent(4),
-                    backgroundColor: globalColor.GOLD,
+                    backgroundColor: globalColor.BTNCOLOR,
                   }}
                   onPress={() => {
                     props.navigation.navigate('ChangePassword', {
@@ -389,7 +387,7 @@ const Profile = props => {
                   
                   >
                   <Text
-                    style={{color: globalColor.BLACK, fontWeight:'700', fontSize: WidthPercent(3.5)}}>
+                    style={{color: globalColor.WHITE, fontWeight:'700', fontSize: WidthPercent(3.5)}}>
                     CHANGE PASSWORD
                   </Text>
                 </TouchableOpacity>

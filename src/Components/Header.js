@@ -19,7 +19,7 @@ const Header = props => {
         height:
           Platform.OS == 'android' ? HeightPercent(10) : HeightPercent(8),
         width: WidthPercent(100),
-        backgroundColor: globalColor.CARD,
+        backgroundColor: globalColor.NEWTHEME,
         paddingHorizontal: WidthPercent(2),
         flexDirection: 'row',
         justifyContent: 'space-between',

@@ -337,7 +337,6 @@ const ContactEdit = props => {
             is_active: userAllDetails.status == 'Active' || '1' ? 1 : 0,
             assigned_campaign_id: selectedCampaign,
           };
-          console.log('sending data to update', selectedCampaign);
           if (props.type == 'Edit') {
             let contactId = props.contactfullInfo.contact_data?.id;
             sendData.contact_id = contactId;
@@ -455,7 +454,6 @@ const ContactEdit = props => {
             onPress={() => {
               // settypeVisible(!typeVisible);
               setShowas(!showas);
-              console.log('list', settypeVisible);
             }}
             style={{flexDirection:'row',justifyContent:'space-between', alignItems:'center',paddingVertical:HeightPercent(2) }}
             >
@@ -707,7 +705,6 @@ const ContactEdit = props => {
         placeholder={"Choose Type"}
         selectedValue={userAllDetails.customerType}
         onChange={item => {
-          console.log('item////',item)
           {changeText('customerType', item);}
         }}
         />

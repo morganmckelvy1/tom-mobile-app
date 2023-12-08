@@ -9,7 +9,6 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 
@@ -147,7 +146,7 @@ const ChangePassword = props => {
           onPress={() => {
             passwordValidation();
           }}>
-          <Text style={{fontSize: WidthPercent(4), color: globalColor.BLACK}}>
+          <Text style={{fontSize: WidthPercent(4), color: globalColor.WHITE}}>
             Save Changes
           </Text>
         </TouchableOpacity>

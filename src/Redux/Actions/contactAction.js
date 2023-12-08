@@ -36,7 +36,6 @@ export const getContactData =
         },
       );
       if (contactData) {
-        console.log('fetched contact data', contactData.data.data);
         dispatch({
           type: GETCONTACTLISTSUCCESS,
           payload: contactData.data.data,
@@ -44,7 +43,6 @@ export const getContactData =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('contact err', err.response.data);
       if (err.response.status == 401) {
         let user_id = userId;
         dispatch(logoutAction({user_id}));
@@ -87,7 +85,6 @@ export const viewContact =
         },
       );
       if (viewcontactData) {
-        console.log('viewed contact >', viewcontactData.status);
         dispatch({
           type: VIEWCONTACT,
           payload: viewcontactData.data.data,
@@ -95,7 +92,6 @@ export const viewContact =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('contact err', err?.response.status);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -137,7 +133,6 @@ export const getContactCampaign =
         },
       );
       if (contactCampaignData) {
-        console.log('fetched contact campaign', contactCampaignData.status);
         dispatch({
           type: GETCONTACTCAMPAIGNTYPE,
           payload: contactCampaignData.data.data,
@@ -145,7 +140,6 @@ export const getContactCampaign =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('contact err', err.response.data);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -183,7 +177,6 @@ export const createContact =
         },
       );
       if (createcontactData) {
-        console.log('createcontactData contact ', createcontactData.status);
         dispatch({
           type: CREATECONTACTSUCCESS,
           payload: createcontactData.data.data,
@@ -191,7 +184,6 @@ export const createContact =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('contact err', err.response.data);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -243,11 +235,9 @@ export const deleteContact =
           type: DELETECONTACTSUCCESS,
           payload: deletecontactData.data.data,
         });
-        console.log('\n\nresponse-------------\n', deletecontactData.data.data);
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('contact delete err', err.response.data);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -294,7 +284,6 @@ export const feedBack =
         },
       );
       if (feedBackData) {
-        console.log('feedBackData contact >', feedBackData.data.data);
         dispatch({
           type: FEEDBACKSTATUS,
           payload: feedBackData.data.data,
@@ -302,7 +291,6 @@ export const feedBack =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('feedback err', err?.response.status);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -346,7 +334,6 @@ export const viewcampaignList =
         },
       );
       if (campaignData) {
-        console.log('campaignData contact >', campaignData.status);
         dispatch({
           type: CAMPAIGNDOWNLOADSTATUS,
           payload: campaignData.data.data,
@@ -354,7 +341,6 @@ export const viewcampaignList =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('campaignData err', err?.response.status);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -401,10 +387,6 @@ export const downloadCampaignList =
         },
       );
       if (campaignListDownloadData) {
-        console.log(
-          'campaignListDownloadData contact >',
-          campaignListDownloadData.status,
-        );
         dispatch({
           type: DOWNLOADCAMPAIGNLIST,
           payload: campaignListDownloadData.data.data,
@@ -412,7 +394,6 @@ export const downloadCampaignList =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('campaignListDownloadData err', err?.response.status);
       if (err.response.status == 401) {
         dispatch(logoutAction({user_id}));
         dispatch(
@@ -456,7 +437,6 @@ export const createReminder =
         },
       );
       if (createReminderData) {
-        console.log('createReminderData contact >', createReminderData.status);
         dispatch({
           type: CREATEREMINDERSTATUS,
           payload: createReminderData.data.data,
@@ -464,7 +444,6 @@ export const createReminder =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('createReminderData err', err?.response.data);
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
