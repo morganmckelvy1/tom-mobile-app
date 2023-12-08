@@ -2,11 +2,8 @@ import React, {useState} from 'react';
 import {
   TouchableOpacity,
   StyleSheet,
-  Text,
   View,
   TextInput,
-  Image,
-  KeyboardAvoidingView,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -21,8 +18,9 @@ const TomTextInput = props => {
   return (
     <View style={styles.container}>
       <View style={styles.textInputLeftImg}>
-        <MaterialIcons name={props.leftIcon} size={WidthPercent(6.6)} />
+        <MaterialIcons name={props.leftIcon} size={WidthPercent(3.8)} />
       </View>
+
       <TextInput
         placeholder={props.placeholder}
         placeholderTextColor={globalColor.LIGHTGREY}
@@ -37,6 +35,7 @@ const TomTextInput = props => {
         // value={props.value && props.value}
         //onSubmitEditing={(event) => props.onSubmit(event)}
       />
+
       {props.rightIcon && (
         <TouchableOpacity
           style={{margin: 10}}
@@ -49,6 +48,8 @@ const TomTextInput = props => {
           />
         </TouchableOpacity>
       )}
+
+      
     </View>
   );
 };
@@ -61,10 +62,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#2c3334',
     borderRadius: 5,
+    padding: 0,
+    height:45
   },
   input: {
     flex: 1,
-    padding: 5,
+    padding: 5
   },
   textInputLeftImg: {
     borderRightWidth: 1,

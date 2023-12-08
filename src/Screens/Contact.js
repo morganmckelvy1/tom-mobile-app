@@ -28,6 +28,7 @@ import ContactEdit from '../Components/ContactCreateEdit';
 import {searchItem} from '../Components/Search';
 import TomLoader from '../Components/tomLoader';
 
+
 var duplicateContactArray = [];
 const Contact = props => {
   const {contactData, error, deletedContact} = props;
@@ -158,8 +159,9 @@ const Contact = props => {
           style={{
             width: WidthPercent(90),
             borderRadius: WidthPercent(1),
-            backgroundColor: globalColor.WHITE,
+            backgroundColor: globalColor.OFFWHITE,
             flexDirection: 'row',
+            margin: 5
           }}>
           <View>
             <Text style={styles.titleText}>
@@ -187,7 +189,7 @@ const Contact = props => {
               justifyContent: 'center',
               paddingHorizontal: WidthPercent(2),
             }}>
-            <AntDesign name="right" size={20} color={globalColor.BLACK} />
+            <AntDesign name="right" size={20} color={globalColor.NEWTHEME} />
           </TouchableOpacity>
         </View>
       </View>
@@ -208,7 +210,7 @@ const Contact = props => {
         <TomLoader />
       ) : (
         <SafeAreaView
-          style={{flex: 1, backgroundColor: globalColor.BACKGROUND}}>
+          style={{flex: 1, backgroundColor:'#dedede'}}>
           <StatusBar
             animated={true}
             backgroundColor={globalColor.CARD}
@@ -225,7 +227,7 @@ const Contact = props => {
             rightTextIcon="+ ADD"
             pressRightTextIcon={pressRightTextIcon}
           />
-          <View style={{flex: 1}}>
+          <View style={{flex: 1,}}>
             <View style={{marginVertical: HeightPercent(2)}}>
               <SearchBox
                 placeholder="search by name"
@@ -260,20 +262,16 @@ const Contact = props => {
             )}
           </View>
           <TouchableOpacity
-            onPress={() => {
-              pressRightTextIcon();
-            }}>
-            <AntDesign
-              name="pluscircle"
-              size={WidthPercent(12)}
-              style={{
-                position: 'absolute',
-                zIndex: 1,
-                color: globalColor.CARD,
-                left: WidthPercent(70),
-                bottom: HeightPercent(5),
-              }}
-            />
+            style={{
+              position: 'absolute',
+              zIndex: 1,             
+              left: WidthPercent(80),
+              bottom: HeightPercent(5),
+              // backgroundColor:globalColor.GOLD
+            
+            }}
+            onPress={() => { pressRightTextIcon();}}>
+            <AntDesign  name="pluscircle" size={WidthPercent(12)} style={{ color: globalColor.NEWTHEME}}/>
           </TouchableOpacity>
         </SafeAreaView>
       )}
@@ -295,6 +293,8 @@ const styles = StyleSheet.create({
     color: globalColor.BLACK,
   },
 });
+
+
 
 const mapStateToProps = state => ({
   contactData: state.contact.contactData,

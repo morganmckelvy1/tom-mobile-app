@@ -2,7 +2,6 @@
 
 buildscript {
     ext {
-        ext.kotlin_version = '1.6.10'
         buildToolsVersion = "30.0.2"
         minSdkVersion = 21
         compileSdkVersion = 30
@@ -12,31 +11,16 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // jcenter()
     }
     dependencies {
         classpath('com.android.tools.build:gradle:7.1.3')
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:4.3.10'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-def REACT_NATIVE_VERSION = new File(['node', '--print',"JSON.parse(require('fs').readFileSync(require.resolve('react-native/package.json'), 'utf-8')).version"].execute(null, rootDir).text.trim())
-
-
 allprojects {
-    configurations.all {
-        resolutionStrategy {
-            force "com.facebook.react:react-native:" + REACT_NATIVE_VERSION
-        }
-    }
-
     repositories {
-        // maven { url 'https://maven.google.com' }
         mavenCentral()
         mavenLocal()
         maven {
@@ -49,9 +33,6 @@ allprojects {
         }
 
         google()
-        // jcenter()
-
         maven { url 'https://www.jitpack.io' }
-        
     }
 }

@@ -5,6 +5,8 @@ import {
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
+  StyleSheet,
+  Image,
   Alert,
   BackHandler,
   TextInput,
@@ -14,6 +16,7 @@ import {
 import {Picker} from '@react-native-picker/picker';
 import {connect} from 'react-redux';
 import MultiSelect from 'react-native-multiple-select';
+import { Dropdown } from 'react-native-element-dropdown';
 
 import {WidthPercent, HeightPercent} from '../Global/device';
 import {TextInputSecond} from '../Utils/TomTextInputSecond';
@@ -31,8 +34,24 @@ import {userDetails} from '../Global/userDetails';
 import TomLoader from './tomLoader';
 import moment from 'moment';
 
-const typeList = ['Choose Type', 'Customer', 'Prospect'];
-const statusList = ['Choose Options', 'Active', 'Inactive'];
+// const typeList = ['Choose Type', 'Customer', 'Prospect'];
+
+const typeList = [
+  // { label: 'Choose Type', value: '1' },
+  { label: 'Customer', value: '1' },
+  { label: 'Prospect', value: '2' },
+ ];
+
+
+// const statusList = ['Choose Options', 'Active', 'Inactive'];
+
+const statusList = [
+  // { label: 'Choose Options', value: '1' },
+  { label: 'Active', value: '1' },
+  { label: 'Inactive', value: '2' },
+];
+
+
 const timeZoneList = [
   'Choose delay time',
   '15 min',
@@ -40,6 +59,7 @@ const timeZoneList = [
   '45 min',
   '60 min',
 ];
+
 var campaignList = [];
 
 const date = new Date();
@@ -317,7 +337,6 @@ const ContactEdit = props => {
             is_active: userAllDetails.status == 'Active' || '1' ? 1 : 0,
             assigned_campaign_id: selectedCampaign,
           };
-          console.log('sending data to update', selectedCampaign);
           if (props.type == 'Edit') {
             let contactId = props.contactfullInfo.contact_data?.id;
             sendData.contact_id = contactId;
@@ -435,22 +454,33 @@ const ContactEdit = props => {
             onPress={() => {
               // settypeVisible(!typeVisible);
               setShowas(!showas);
-              console.log('list', settypeVisible);
-            }}>
-            <Text style={{fontSize: WidthPercent(3), marginBottom: 15}}>
+            }}
+            style={{flexDirection:'row',justifyContent:'space-between', alignItems:'center',paddingVertical:HeightPercent(2) }}
+            >
+            <Text style={{fontSize: WidthPercent(3)}}>
               ASSIGNED CAMPAIGN
             </Text>
+            <Image source={require('../Assests/Images/downArrow.png')} style={{width:WidthPercent(3),height:WidthPercent(3)}}/>
           </TouchableOpacity>
-          {showas && campaignTypeList
+          {showas
             ? campaignTypeList.map((item, index) => {
                 return (
-                  <TouchableOpacity key={index} onPress={() => markTags(item)}>
+                  <TouchableOpacity style={{ paddingVertical:HeightPercent(0.7),}} key={index} onPress={() => markTags(item)} >
                     {selectedCampaign.includes(item.id) ? (
-                      <Text
-                        style={{marginBottom: 5, color: globalColor.PRIMARY}}
-                        key={index}>
-                        {item.name}
-                      </Text>
+
+                      <View style={{width:WidthPercent(89),justifyContent:'space-between',flexDirection:'row', alignItems:'center'}}>
+
+                         <Text
+                          style={{marginBottom: 5, color: globalColor.PRIMARY}}
+                          key={index}>
+                          {item.name}
+                         </Text>
+
+                         <Image source={require('../Assests/Images/tick.png')} resizeMode={'contain'} style={{width:WidthPercent(3.5),height:WidthPercent(3.5), tintColor:globalColor.PRIMARY}}/>
+
+                      </View>
+                      
+
                     ) : (
                       <Text style={{marginBottom: 5}} key={index}>
                         {item.name}
@@ -610,29 +640,31 @@ const ContactEdit = props => {
             }}
           />
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
+
+
+
+        {/* <TouchableOpacity style={{
             borderBottomWidth: 1,
             borderBottomColor: globalColor.LIGHTGREY,
             zIndex: 1,
+            backgroundColor:'transparent'
           }}
           onPress={() => {
             // settypeVisible(!typeVisible);
           }}>
-          <Text
-            style={{
+
+          <Text style={{
               fontSize: WidthPercent(3),
               marginTop: Platform.OS === 'ios' ? WidthPercent(2) : null,
               marginLeft: Platform.OS === 'ios' ? WidthPercent(2) : null,
             }}>
             TYPE
           </Text>
+
           <Picker
-            selectedValue={userAllDetails.customerType}
-            onValueChange={(itemValue, itemIndex) => {
-              changeText('customerType', itemValue);
-            }}
-            style={{width: WidthPercent(50)}}
+            // selectedValue={userAllDetails.customerType}
+            onValueChange={(itemValue, itemIndex) => {changeText('customerType', itemValue);}}
+            style={{width: WidthPercent(93), backgroundColor:'transparent'}}
             mode="dropdown">
             {typeList.map((item, index) => {
               return (
@@ -645,9 +677,69 @@ const ContactEdit = props => {
               );
             })}
           </Picker>
-        </TouchableOpacity>
 
-        <TouchableOpacity
+
+        </TouchableOpacity> */}
+
+        <Text style={{
+            fontSize: WidthPercent(3),
+            marginTop: Platform.OS === 'ios' ? WidthPercent(2) : WidthPercent(2),
+            marginLeft: Platform.OS === 'ios' ? WidthPercent(2) : null,
+          }}>
+          TYPE
+        </Text>
+
+        {/* {console.log('selectedValue---------', userAllDetails.customerType)} */}
+
+        <Dropdown
+        style={[styles.dropdown]}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        iconStyle={styles.iconStyle}
+        containerStyle={{backgroundColor:globalColor.WHITE}}
+        activeColor={{backgroundColor:'red'}}
+        itemTextStyle={{ color:globalColor.BLACK, fontSize:WidthPercent(3)}}
+        data={typeList}
+        labelField="label"
+        valueField="value"
+        placeholder={"Choose Type"}
+        selectedValue={userAllDetails.customerType}
+        onChange={item => {
+          {changeText('customerType', item);}
+        }}
+        />
+
+        <Text style={{
+          fontSize: WidthPercent(3),
+          marginTop: Platform.OS === 'ios' ? WidthPercent(2) : WidthPercent(2),
+          marginLeft: Platform.OS === 'ios' ? WidthPercent(2) : null,
+          }}>
+           STATUS
+         </Text>
+
+        {/* {console.log('selectedValue---------', userAllDetails.customerType)} */}
+
+        <Dropdown
+        style={[styles.dropdown]}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        iconStyle={styles.iconStyle}
+        containerStyle={{backgroundColor:globalColor.WHITE}}
+        activeColor={{backgroundColor:'red'}}
+        itemTextStyle={{ color:globalColor.BLACK,fontSize:WidthPercent(3)}}
+        data={statusList}
+        labelField="label"
+        valueField="value"
+        placeholder={"Choose Option"}
+        selectedValue={userAllDetails.status}
+        onChange={item => {
+          console.log('item////',item)
+          {changeText('status', item);}
+        }}
+        />
+
+
+        {/* <TouchableOpacity
           style={{
             borderBottomWidth: 1,
             borderBottomColor: globalColor.LIGHTGREY,
@@ -683,7 +775,10 @@ const ContactEdit = props => {
               );
             })}
           </Picker>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+
+        <View style={{height:HeightPercent(10)}}/>
+
       </ScrollView>
     );
   };
@@ -866,7 +961,7 @@ const ContactEdit = props => {
               margin: WidthPercent(2),
               borderWidth: WidthPercent(0.5),
               borderColor: globalColor.LIGHTGREY,
-              backgroundColor: globalColor.PRIMARY,
+              backgroundColor: globalColor.BTNCOLOR,
             }}
             onPress={() => {
               settagDetails({...tagDetails, name: !tagDetails.name});
@@ -896,7 +991,7 @@ const ContactEdit = props => {
               margin: WidthPercent(2),
               borderWidth: WidthPercent(0.5),
               borderColor: globalColor.LIGHTGREY,
-              backgroundColor: globalColor.PRIMARY,
+              backgroundColor: globalColor.BTNCOLOR,
             }}
             onPress={() => {
               settagDetails({...tagDetails, email: !tagDetails.email});
@@ -923,7 +1018,7 @@ const ContactEdit = props => {
               margin: WidthPercent(2),
               borderWidth: WidthPercent(0.5),
               borderColor: globalColor.LIGHTGREY,
-              backgroundColor: globalColor.PRIMARY,
+              backgroundColor: globalColor.BTNCOLOR,
             }}
             onPress={() => {
               settagDetails({...tagDetails, phone: !tagDetails.phone});
@@ -953,7 +1048,7 @@ const ContactEdit = props => {
             margin: WidthPercent(2),
             borderWidth: WidthPercent(0.5),
             borderColor: globalColor.LIGHTGREY,
-            backgroundColor: globalColor.PRIMARY,
+            backgroundColor: globalColor.BTNCOLOR,
           }}
           onPress={() => {
             sendReminder();
@@ -994,7 +1089,7 @@ const ContactEdit = props => {
               }}>
               <TouchableOpacity
                 style={{
-                  height: HeightPercent(7),
+                  height: HeightPercent(6),
                   width: WidthPercent(45),
                   borderRadius: 8,
                   justifyContent: 'center',
@@ -1002,7 +1097,7 @@ const ContactEdit = props => {
                   borderWidth: WidthPercent(0.5),
                   borderColor: globalColor.LIGHTGREY,
                   backgroundColor: generalInfoStatus
-                    ? globalColor.PRIMARY
+                    ? globalColor.BTNCOLOR
                     : globalColor.WHITE,
                 }}
                 onPress={() => {
@@ -1012,7 +1107,7 @@ const ContactEdit = props => {
                   style={{
                     fontSize: WidthPercent(4),
                     color: generalInfoStatus
-                      ? globalColor.WHITE
+                      ? globalColor.BLACK
                       : globalColor.BLACK,
                   }}>
                   General Info
@@ -1020,20 +1115,21 @@ const ContactEdit = props => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  height: HeightPercent(7),
+                  height: HeightPercent(6),
                   width: WidthPercent(45),
                   borderRadius: 8,
                   justifyContent: 'center',
                   alignItems: 'center',
                   borderWidth: WidthPercent(0.5),
                   backgroundColor: !generalInfoStatus
-                    ? globalColor.PRIMARY
+                    ? globalColor.BTNCOLOR
                     : globalColor.WHITE,
                   borderColor: globalColor.LIGHTGREY,
                 }}
                 onPress={() => {
                   setgeneralInfoStatus(false);
                 }}>
+
                 <Text
                   style={{
                     fontSize: WidthPercent(4),
@@ -1057,6 +1153,42 @@ const ContactEdit = props => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  dropdown: {
+    width:WidthPercent(90),
+    height: HeightPercent(7.2),
+    borderBottomColor: globalColor.LIGHTGREY,
+    borderBottomWidth: WidthPercent(0.1 ),
+    paddingHorizontal:WidthPercent(2),
+    alignSelf:'center',
+    backgroundColor:globalColor.WHITE,
+    // fontFamily:fonts.InterRegular,
+    color:globalColor.BLACK
+  },
+  
+  icon: {
+    marginRight: WidthPercent(5),
+  },
+      
+  placeholderStyle: {
+    fontSize:WidthPercent(2.9),
+    color:globalColor.LIGHTGREY,
+  },
+  
+  selectedTextStyle: {
+    fontSize:WidthPercent(3),
+    color:globalColor.BLACK
+  },
+
+  iconStyle: {
+    width: WidthPercent(7),
+    height: WidthPercent(7),
+    marginRight:WidthPercent(-2),
+    tintColor:globalColor.LIGHTGREY
+  },
+});
+
 
 const mapStateToProps = state => ({
   campaignType: state.contact.campaignType,

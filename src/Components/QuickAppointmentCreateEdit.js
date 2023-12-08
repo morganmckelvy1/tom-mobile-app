@@ -262,7 +262,7 @@ function QuickAppointmentCreateEdit(props) {
           <SafeAreaView
             style={{
               flex: 1,
-              backgroundColor: globalColor.BACKGROUND,
+              backgroundColor:'#ddd',
               // alignItems: 'center',
             }}>
             <StatusBar
@@ -280,7 +280,7 @@ function QuickAppointmentCreateEdit(props) {
               pressleftImageIcon={null}
               rightIcon={null}
               pressRightIcon={null}
-              rightTextIcon={null}
+              rightTextIcon={'\n \n '}
               // pressRightTextIcon={pressRightTextIcon}
             />
             {props.type != 'Edit' && (
@@ -303,13 +303,22 @@ function QuickAppointmentCreateEdit(props) {
                 searchedContactUI()
               ) : searchedContactState?.length == 0 ? (
                 <>
+
+                 {/* <View style={{backgroundColor:'green', marginVertical:10}}> */}
+                
                   <TextInputSecond
                     name="name"
                     label="CONTACT NAME"
                     val={newAppointmentInfo?.contact_name}
                     _onChangeText={changeText}
-                    active={false}
+                    // active={false}
+                    active={true}
+
                   />
+
+                  {/* </View> */}
+              
+
                   <TouchableOpacity
                     style={{
                       borderBottomWidth: 1,
@@ -322,6 +331,7 @@ function QuickAppointmentCreateEdit(props) {
                     <Text style={{fontSize: WidthPercent(3)}}>
                       APPOINTMENT DATE
                     </Text>
+                    
                     <Text
                       style={{
                         fontSize: WidthPercent(3),
@@ -330,6 +340,7 @@ function QuickAppointmentCreateEdit(props) {
                       }}>
                       {newAppointmentInfo?.date}
                     </Text>
+
                     <DatePicker
                       modal
                       open={dateOpen}
@@ -403,13 +414,13 @@ function QuickAppointmentCreateEdit(props) {
                   }}>
                   <TouchableOpacity
                     style={{
-                      height: HeightPercent(7),
+                      height: HeightPercent(6),
                       width: WidthPercent(80),
                       borderRadius: 10,
                       marginTop: HeightPercent(3),
                       justifyContent: 'center',
                       alignItems: 'center',
-                      backgroundColor: globalColor.PRIMARY,
+                      backgroundColor: globalColor.BTNCOLOR,
                     }}
                     onPress={() => {
                       props.type == 'Edit'
@@ -429,7 +440,7 @@ function QuickAppointmentCreateEdit(props) {
                   {props.type != 'Edit' && (
                     <TouchableOpacity
                       style={{
-                        height: HeightPercent(7),
+                        height: HeightPercent(6),
                         width: WidthPercent(80),
                         borderRadius: 10,
                         marginTop: HeightPercent(3),
@@ -485,7 +496,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: WidthPercent(5),
     borderTopLeftRadius: WidthPercent(1),
-    color: globalColor.CARD,
+    color: globalColor.NEWTHEME,
     fontSize: WidthPercent(4),
     fontWeight: 'bold',
   },
@@ -496,7 +507,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     padding: WidthPercent(5),
     borderTopRightRadius: WidthPercent(1),
-    color: globalColor.CARD,
+    color: globalColor.NEWTHEME,
     fontSize: WidthPercent(4),
     fontWeight: 'bold',
   },

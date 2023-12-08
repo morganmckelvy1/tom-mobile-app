@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {View, TouchableOpacity, Text, Image, ScrollView, Platform} from 'react-native';
-import {connect} from 'react-redux';
-
-import {HeightPercent, WidthPercent} from '../Global/device';
+import React, { useEffect, useState } from 'react';
+import { View, TouchableOpacity, Text, Image, ScrollView, Platform } from 'react-native';
+import { connect } from 'react-redux';
+import LinearGradient from 'react-native-linear-gradient';
+import { HeightPercent, WidthPercent } from '../Global/device';
 import * as globalColor from '../Global/color';
 import DrawerItem from '../Utils/NavigationDrawerItem';
 import profileIcon from '../Assests/Images/profileIcon.png';
@@ -11,10 +11,11 @@ import appointmentIcon from '../Assests/Images/appointment.png';
 import reminderIcon from '../Assests/Images/reminder.png';
 import supportIcon from '../Assests/Images/support.png';
 import logoutIcon from '../Assests/Images/logout.png';
-import {userDetails} from '../Global/userDetails';
+import { userDetails } from '../Global/userDetails';
+import QuickAppointment from '../Screens/QuickAppointment';
 
 const CustomDrawer = props => {
-  const {UserprofileDetails} = props;
+  const { UserprofileDetails } = props;
   const [userInfo, setUserInfo] = useState({
     name: null,
     email: null,
@@ -34,43 +35,51 @@ const CustomDrawer = props => {
     }
   }, [UserprofileDetails]);
   return (
-    <View style={{flex: 1}}>
-      <View style={{flex: 0.5, backgroundColor: globalColor.BLACK}}>
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Image
-            style={{
-              height:Platform.OS=='android'? HeightPercent(12):HeightPercent(10),
-              width: Platform.OS=='android'? HeightPercent(12):HeightPercent(10),
-              borderRadius: Platform.OS=='android'? HeightPercent(6):HeightPercent(5),
-              backgroundColor: globalColor.LIGHTGREY,
-            }}
-            source={
-              userInfo.profilePic
-                ? {uri: userInfo.profilePic}
-                : require('../Assests/Images/profile.png')
-            }
-          />
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: HeightPercent(2),
-            }}>
-            <Text style={{fontSize: WidthPercent(5), color: globalColor.WHITE}}>
-              {userInfo.name}
-            </Text>
-            <Text
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 0.5 }}>
+        <LinearGradient
+          colors={['#192f6a', '#02373B', '#02373B']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={{ flex: 1 }}
+        >
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Image
               style={{
-                fontSize: WidthPercent(4),
-                color: globalColor.WHITE,
-                maxHeight: HeightPercent(7),
+                height: Platform.OS == 'android' ? HeightPercent(12) : HeightPercent(10),
+                width: Platform.OS == 'android' ? HeightPercent(12) : HeightPercent(10),
+                borderRadius: Platform.OS == 'android' ? HeightPercent(6) : HeightPercent(5),
+                backgroundColor: globalColor.LIGHTGREY,
+              }}
+              source={
+                userInfo.profilePic
+                  ? { uri: userInfo.profilePic }
+                  : require('../Assests/Images/profile.png')
+              }
+            />
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: HeightPercent(2),
               }}>
-              {userInfo.email}
-            </Text>
+              <Text numberOfLines={1} style={{ width: WidthPercent(50), fontSize: WidthPercent(5), color: globalColor.WHITE, textAlign: 'center' }}>
+                {userInfo.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: WidthPercent(4),
+                  color: globalColor.WHITE,
+                  maxHeight: HeightPercent(7),
+                  textAlign: 'center'
+                }}>
+                {userInfo.email}
+              </Text>
+            </View>
           </View>
-        </View>
+        </LinearGradient>
       </View>
-      <ScrollView style={{flex: 2, backgroundColor: '#202020'}}>
+      <ScrollView style={{ flex: 2, backgroundColor: '#FFFFFF' }}>
         <DrawerItem src={profileIcon} name="Profile" {...props} />
         <DrawerItem src={ContactIcon} name="Contacts" {...props} />
         <DrawerItem src={appointmentIcon} name="QuickAppointment" {...props} />

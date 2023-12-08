@@ -16,7 +16,8 @@ import {
 } from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 import {connect} from 'react-redux';
-import RNFetchBlob from 'rn-fetch-blob';
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob
 import DatePicker from 'react-native-date-picker';
 
 import ContactEdit from '../Components/ContactCreateEdit';
@@ -414,7 +415,7 @@ function ContactDetails(props) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 alignSelf: 'center',
-                backgroundColor: globalColor.PRIMARY,
+                backgroundColor: globalColor.BTNCOLOR,
               }}
               onPress={() => {
                 downloadcampaignListAction();
@@ -512,7 +513,7 @@ function ContactDetails(props) {
               pressleftImageIcon={null}
               rightIcon={null}
               pressRightIcon={null}
-              rightTextIcon={null}
+              rightTextIcon={'     '}
               // pressRightTextIcon={pressRightTextIcon}
             />
             <ScrollView>
@@ -587,13 +588,13 @@ function ContactDetails(props) {
               <View style={{alignItems: 'center'}}>
                 <TouchableOpacity
                   style={{
-                    height: HeightPercent(7),
+                    height: HeightPercent(6),
                     width: WidthPercent(80),
                     borderRadius: 10,
                     marginTop: HeightPercent(3),
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: globalColor.PRIMARY,
+                    backgroundColor: globalColor.BTNCOLOR,
                   }}
                   onPress={() => {
                     seteditContactStatus(true);
@@ -610,14 +611,14 @@ function ContactDetails(props) {
 
                 <TouchableOpacity
                   style={{
-                    height: HeightPercent(7),
+                    height: HeightPercent(6),
                     width: WidthPercent(80),
                     borderRadius: 8,
                     justifyContent: 'center',
                     alignItems: 'center',
                     borderWidth: WidthPercent(0.5),
                     backgroundColor: !generalInfoStatus
-                      ? globalColor.PRIMARY
+                      ? globalColor.BTNCOLOR
                       : globalColor.WHITE,
                     borderColor: globalColor.LIGHTGREY,
                     marginTop: HeightPercent(3),
@@ -639,7 +640,7 @@ function ContactDetails(props) {
 
                 <TouchableOpacity
                   style={{
-                    height: HeightPercent(7),
+                    height: HeightPercent(6),
                     width: WidthPercent(80),
                     borderRadius: 10,
                     marginTop: HeightPercent(3),
@@ -675,7 +676,7 @@ function ContactDetails(props) {
                   }}>
                   <TouchableOpacity
                     style={{
-                      height: HeightPercent(7),
+                      height: HeightPercent(6),
                       width: WidthPercent(38),
                       borderRadius: 10,
                       marginTop: HeightPercent(3),
@@ -684,7 +685,7 @@ function ContactDetails(props) {
                       padding: 10,
                       borderWidth: WidthPercent(0.5),
                       borderColor: globalColor.LIGHTGREY,
-                      backgroundColor: globalColor.PRIMARY,
+                      backgroundColor: globalColor.BTNCOLOR,
                     }}
                     onPress={() => {
                       Alert.alert('Confirm to send feedback campaign?', '', [
@@ -711,7 +712,7 @@ function ContactDetails(props) {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{
-                      height: HeightPercent(7),
+                      height: HeightPercent(6),
                       width: WidthPercent(38),
                       borderRadius: 10,
                       marginTop: HeightPercent(3),
@@ -720,7 +721,7 @@ function ContactDetails(props) {
                       justifyContent: 'center',
                       borderWidth: WidthPercent(0.5),
                       borderColor: globalColor.LIGHTGREY,
-                      backgroundColor: globalColor.PRIMARY,
+                      backgroundColor: globalColor.BTNCOLOR,
                     }}
                     onPress={() => {
                       setcampaignModal(true);

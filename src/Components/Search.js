@@ -1,7 +1,7 @@
 export const searchItem = (mainArray, text, type) => {
   if (mainArray) {
     const newData = mainArray.filter(item => {
-      console.log('as', item);
+      //console.log('as', item);
       var itemData;
       if (type == 'Contact') {
         itemData = `${item.first_name.toUpperCase()}`;

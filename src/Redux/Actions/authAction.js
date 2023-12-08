@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Alert} from 'react-native';
 import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
@@ -43,7 +44,6 @@ export const LoginApi =
       };
       const userLogin = await axios.post(BASEURL + '/login', sendData);
       if (userLogin) {
-        console.log('login true');
         dispatch({
           type: LOGIN_SUCCESS,
           payload: userLogin.data.data,
@@ -51,7 +51,6 @@ export const LoginApi =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('login err', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -75,7 +74,6 @@ export const forgotpasswordresetlink =
         sendData,
       );
       if (resetLink) {
-        console.log('login true');
         dispatch({
           type: FORGOTPASSWORDRESETLINKSUCCESS,
           payload: resetLink.data.data,
@@ -83,7 +81,7 @@ export const forgotpasswordresetlink =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('login err', err.response.data.message);
+      Alert.alert( err.response.data.message)
       dispatch(
         returnErrors(
           err.response.data,
@@ -110,11 +108,11 @@ export const resetPasswordAction =
         email: emailToken,
       };
       const resePassword = await axios.post(
-        BASEURL + '/create-new-password-reset',
+        // BASEURL + '/create-new-password-reset',
+        BASEURL + '/password-reset-link', 
         sendData,
       );
       if (resePassword) {
-        console.log('resePassword true');
         dispatch({
           type: RESETPASSWORDSUCCESS,
           payload: resePassword.data.data,
@@ -122,7 +120,6 @@ export const resetPasswordAction =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('RESET err', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -149,12 +146,10 @@ export const logoutAction =
       };
       const logout = await axios.post(BASEURL + '/logout', sendData);
       if (logout) {
-        console.log('logout true');
         dispatch(clearAuth());
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('logout err', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
