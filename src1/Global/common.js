@@ -1,1 +1,0 @@
-export const BASEURL ='https://dev.nodejsdapldevelopments.com/api/v1'
