@@ -46,7 +46,7 @@ const DrawerItem = props => {
           width:WidthPercent(65),
           alignSelf:'center',
           borderBottomWidth:WidthPercent(0.1),
-          borderBottomColor:globalColor.LIGHTGREY,
+          borderBottomColor:globalColor.WHITE,
           // backgroundColor:'red',
           justifyContent:'space-between'
         }}

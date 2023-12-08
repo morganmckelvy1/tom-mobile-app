@@ -12,7 +12,6 @@ export const supportMessage = (token,topic,message) => async dispatch => {
       topic: topic,
       message: message,
     };
-    console.log('2',sendData);
 
     const supportData = await axios.post(
       BASEURL + '/support/create-support',

@@ -12,6 +12,7 @@ import reminderIcon from '../Assests/Images/reminder.png';
 import supportIcon from '../Assests/Images/support.png';
 import logoutIcon from '../Assests/Images/logout.png';
 import { userDetails } from '../Global/userDetails';
+import QuickAppointment from '../Screens/QuickAppointment';
 
 const CustomDrawer = props => {
   const { UserprofileDetails } = props;
@@ -62,7 +63,7 @@ const CustomDrawer = props => {
                 alignItems: 'center',
                 marginTop: HeightPercent(2),
               }}>
-              <Text numberOfLines={1} style={{ width: WidthPercent(50), fontSize: WidthPercent(5), color: globalColor.WHITE }}>
+              <Text numberOfLines={1} style={{ width: WidthPercent(50), fontSize: WidthPercent(5), color: globalColor.WHITE, textAlign: 'center' }}>
                 {userInfo.name}
               </Text>
               <Text
@@ -70,6 +71,7 @@ const CustomDrawer = props => {
                   fontSize: WidthPercent(4),
                   color: globalColor.WHITE,
                   maxHeight: HeightPercent(7),
+                  textAlign: 'center'
                 }}>
                 {userInfo.email}
               </Text>

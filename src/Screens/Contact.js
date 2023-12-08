@@ -189,7 +189,7 @@ const Contact = props => {
               justifyContent: 'center',
               paddingHorizontal: WidthPercent(2),
             }}>
-            <AntDesign name="right" size={20} color={globalColor.BLACK} />
+            <AntDesign name="right" size={20} color={globalColor.NEWTHEME} />
           </TouchableOpacity>
         </View>
       </View>
@@ -210,7 +210,7 @@ const Contact = props => {
         <TomLoader />
       ) : (
         <SafeAreaView
-          style={{flex: 1, backgroundColor:'#ccc'}}>
+          style={{flex: 1, backgroundColor:'#dedede'}}>
           <StatusBar
             animated={true}
             backgroundColor={globalColor.CARD}
@@ -271,7 +271,7 @@ const Contact = props => {
             
             }}
             onPress={() => { pressRightTextIcon();}}>
-            <AntDesign  name="pluscircle" size={WidthPercent(12)} style={{ color: globalColor.CARD,}}/>
+            <AntDesign  name="pluscircle" size={WidthPercent(12)} style={{ color: globalColor.NEWTHEME}}/>
           </TouchableOpacity>
         </SafeAreaView>
       )}

@@ -20,14 +20,12 @@ export const getProfileData =
         },
       });
       if (profileData) {
-        console.log('fetched profile data');
         dispatch({
           type: GETPROFILEDATA,
           payload: profileData.data.data,
         });
       }
     } catch (err) {
-      console.log('profile err', err?.response?.status);
       if (err.response.status == 401) {
         dispatch(logoutAction({user_id}))
         dispatch(
@@ -58,7 +56,6 @@ export const updateProfileField =
         },
       );
       if (updateprofileData) {
-        console.log('updateProfileField data', updateprofileData.status);
 
         if (singleFile) {
           dispatch(updateProfilePic(token, singleFile));
@@ -89,7 +86,6 @@ export const updateProfilePic = (token, file) => async dispatch => {
       },
     );
     if (updateprofilepictureData) {
-      console.log('update profile picture');
       dispatch({
         type: UPDATEPROFILEDATA,
       });
@@ -125,7 +121,6 @@ export const changePasswordAction =
         },
       );
       if (changedPassword) {
-        console.log('changedPassword data', changedPassword.status);
         dispatch({
           type: CHANGEPASSWORDSUCCESS,
         });

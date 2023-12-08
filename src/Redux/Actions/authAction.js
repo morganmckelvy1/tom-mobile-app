@@ -42,11 +42,8 @@ export const LoginApi =
         device_token: generatedToken,
         time_zone: timeZone,
       };
-      console.log(sendData);
       const userLogin = await axios.post(BASEURL + '/login', sendData);
-      console.log(userLogin);
       if (userLogin) {
-        console.log('login true');
         dispatch({
           type: LOGIN_SUCCESS,
           payload: userLogin.data.data,
@@ -54,7 +51,6 @@ export const LoginApi =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('login err------', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -78,7 +74,6 @@ export const forgotpasswordresetlink =
         sendData,
       );
       if (resetLink) {
-        console.log('login true');
         dispatch({
           type: FORGOTPASSWORDRESETLINKSUCCESS,
           payload: resetLink.data.data,
@@ -87,7 +82,6 @@ export const forgotpasswordresetlink =
       }
     } catch (err) {
       Alert.alert( err.response.data.message)
-      console.log('login err------', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -119,7 +113,6 @@ export const resetPasswordAction =
         sendData,
       );
       if (resePassword) {
-        console.log('resePassword true');
         dispatch({
           type: RESETPASSWORDSUCCESS,
           payload: resePassword.data.data,
@@ -127,7 +120,6 @@ export const resetPasswordAction =
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('RESET err', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,
@@ -154,12 +146,10 @@ export const logoutAction =
       };
       const logout = await axios.post(BASEURL + '/logout', sendData);
       if (logout) {
-        console.log('logout true');
         dispatch(clearAuth());
         dispatch(clearErrors());
       }
     } catch (err) {
-      console.log('logout err', err.response.data.message);
       dispatch(
         returnErrors(
           err.response.data,

@@ -96,7 +96,7 @@ const Login = props => {
 
   return (
     <LinearGradient
-      colors={['#192f6a', '#E0E0E0', '#757575']}
+     colors={['#02373B', '#02373B', '#192f6a']}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       style={{ flex: 1 }}
@@ -104,7 +104,6 @@ const Login = props => {
       <View
         style={{
           flex: 1,
-          backgroundColor: globalColor.BACKGROUND,
           justifyContent: 'center',
         }}>
         <StatusBar backgroundColor={globalColor.PRIMARY} />
