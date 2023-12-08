@@ -39,6 +39,7 @@ export const getProfileData =
           ),
         );
       }
+      dispatch(logoutAction({user_id}))
     }
   };
 

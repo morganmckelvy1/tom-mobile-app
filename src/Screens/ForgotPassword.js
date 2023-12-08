@@ -9,20 +9,21 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Platform,
+  Image
 } from 'react-native';
-import axios from 'axios';
 import {connect} from 'react-redux';
-
+import LinearGradient from 'react-native-linear-gradient';
 import * as globalColor from '../Global/color';
 import {HeightPercent, WidthPercent} from '../Global/device';
 import {TomTextInput} from '../Utils/TomTextInput';
-import {BASEURL} from '../Global/common';
 import {
   forgotpasswordresetlink,
   resetPasswordAction,
   clearcresetLink,
   clearResetpasswordstatus,
 } from '../Redux/Actions/authAction';
+import Logo from '../Assests/Images/logo.png';
+
 
 const ForgotPassword = props => {
   const {linksent, resetstatus, error} = props;
@@ -106,6 +107,12 @@ const ForgotPassword = props => {
   };
 
   return (
+    <LinearGradient
+      colors={['#192f6a', '#E0E0E0', '#757575']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={{ flex: 1 }}
+    >
     <View
       style={{
         flex: 1,
@@ -119,24 +126,35 @@ const ForgotPassword = props => {
             backgroundColor: globalColor.WHITE,
             margin: 30,
             borderRadius: 10,
-            height: HeightPercent(60),
+            height: HeightPercent(50),
           }}>
+
+          <View style={{ flex: 1, padding: 15 }}>
+              <Image source={Logo}
+                style={{
+                  height: 100,
+                  width: 300,
+                }}
+              />
+            </View>
+
           <View style={{flex: 1}}>
             <Text
               style={{
                 color: globalColor.CARD,
-                fontSize: WidthPercent(8),
-                fontWeight: 'bold',
-                marginLeft: 10,
-                paddingTop: HeightPercent(5),
+                  fontSize: WidthPercent(8),
+                  fontWeight: 'bold',
+                  marginLeft: 10,
+                  textAlign: 'center'
               }}>
               {sendResetMail ? 'Reset Password' : 'Forgot Password'}
             </Text>
             <Text
               style={{
                 color: globalColor.PRIMARY,
-                fontSize: WidthPercent(4.5),
-                paddingLeft: 10,
+                  fontSize: WidthPercent(4),
+                  paddingLeft: 10,
+                  textAlign: 'center'
               }}>
               {sendResetMail
                 ? 'The password should have atleast 6 characters'
@@ -214,7 +232,7 @@ const ForgotPassword = props => {
               }}>
               <Text
                 style={{
-                  color: globalColor.BLACK,
+                  color: globalColor.WHITE,
                   textAlign: 'center',
                   fontSize: WidthPercent(3.5),
                 }}>
@@ -248,6 +266,7 @@ const ForgotPassword = props => {
         </View>
       </TouchableWithoutFeedback>
     </View>
+    </LinearGradient>
   );
 };
 

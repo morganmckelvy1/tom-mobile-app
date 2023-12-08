@@ -603,7 +603,7 @@ function ContactDetails(props) {
                   <Text
                     style={{
                       fontSize: WidthPercent(4),
-                      color: globalColor.BLACK,
+                      color: globalColor.WHITE,
                     }}>
                     Edit Contact
                   </Text>
@@ -705,7 +705,7 @@ function ContactDetails(props) {
                     <Text
                       style={{
                         fontSize: WidthPercent(4),
-                        color: globalColor.BLACK,
+                        color: globalColor.WHITE,
                       }}>
                       Send Feedback
                     </Text>
@@ -730,7 +730,7 @@ function ContactDetails(props) {
                     <Text
                       style={{
                         fontSize: WidthPercent(4),
-                        color: globalColor.BLACK,
+                        color: globalColor.WHITE,
                       }}>
                       Campaign List
                     </Text>

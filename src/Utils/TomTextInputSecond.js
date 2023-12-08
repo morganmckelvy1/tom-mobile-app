@@ -1,13 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {
-  DefaultTheme,
   Provider as PaperProvider,
   TextInput,
 } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import PhoneInput from 'react-native-phone-input';
-import CountryPicker from 'react-native-country-picker-modal';
 
 import * as globalColor from '../Global/color';
 import {HeightPercent, WidthPercent} from '../Global/device';

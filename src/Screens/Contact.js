@@ -159,8 +159,9 @@ const Contact = props => {
           style={{
             width: WidthPercent(90),
             borderRadius: WidthPercent(1),
-            backgroundColor: globalColor.WHITE,
+            backgroundColor: globalColor.OFFWHITE,
             flexDirection: 'row',
+            margin: 5
           }}>
           <View>
             <Text style={styles.titleText}>
