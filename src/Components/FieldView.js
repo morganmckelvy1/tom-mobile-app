@@ -35,7 +35,7 @@ function FieldView(props) {
           flex: 1,
           textAlign: 'left',
           fontSize: WidthPercent(props.fontSize ? props.fontSize : 3),
-          color: globalColor.BLACK,
+          //color: globalColor.BLACK,
           // backgroundColor:'cyan'
           // fontWeight:'bold'
         }}>

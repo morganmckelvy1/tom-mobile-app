@@ -1,17 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, Text, Image, TouchableOpacity, Platform} from 'react-native';
-import axios from 'axios';
+
 import {connect} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {HeightPercent, WidthPercent} from '../Global/device';
 import * as globalColor from '../Global/color';
 import {userDetails} from '../Global/userDetails';
 import {clearAuth, logoutAction} from '../Redux/Actions/authAction';
-import {AuthContext} from '../Components/context';
-import {BASEURL} from '../Global/common';
-import { widthPercentageToDP } from 'react-native-responsive-screen';
-import { Colors } from 'react-native-paper';
+
 
 const DrawerItem = props => {
   // const {signOut} = useContext(AuthContext);
@@ -81,7 +77,7 @@ const DrawerItem = props => {
             height:Platform.OS=='android'? HeightPercent(2.6):HeightPercent(2),
             width: Platform.OS=='android'? HeightPercent(2.6):HeightPercent(2),
             marginLeft: WidthPercent(4),
-            tintColor:Colors.BLACK
+            //tintColor:Colors.BLACK
           }}
           source={require('../Assests/Images/next.png')}
         />
