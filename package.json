@@ -8,11 +8,11 @@
     "lint": "eslint .",
     "start": "react-native start",
     "build": "cd android && gradlew assembleDebug && cd ../",
+    "release": "npx react-native build-android --mode=release",
     "prebuild": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "test": "jest"
   },
   "dependencies": {
-    "@expo/vector-icons": "^13.0.0",
     "@react-native-async-storage/async-storage": "^1.17.3",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "^2.2.1",
