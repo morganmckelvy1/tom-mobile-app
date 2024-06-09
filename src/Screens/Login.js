@@ -22,13 +22,11 @@ import { LoginApi, clearAuth } from '../Redux/Actions/authAction';
 import Logo from '../Assests/Images/logo.png';
 
 const Login = props => {
-  // const {signIn} = useContext(AuthContext);
   const [generatedToken, setgeneratedToken] = useState(null);
   const [email_phone_txt, setemail_phone_txt] = useState('');
   const [password_txt, setpassword_txt] = useState('');
-  const [changeicon, setchangeicon] = useState(false);
 
-  const { userInfo, isAuthenticated, error, show_message } = props;
+  const { isAuthenticated, error } = props;
 
   useEffect(() => {
     if (error.id === 'LOGIN_FAIL' && !isAuthenticated) {
@@ -51,7 +49,6 @@ const Login = props => {
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
-        // value previously stored
         setgeneratedToken(value);
       } else {
         let token = uuidv4();
@@ -88,7 +85,6 @@ const Login = props => {
         Alert.alert('Email and password should be at least 6 digit');
       }
     } catch (error) {
-      console.error('error', error);
       Alert.alert('Wrong email or password.');
     }
   };

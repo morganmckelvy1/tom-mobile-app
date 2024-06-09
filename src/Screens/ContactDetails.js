@@ -86,45 +86,25 @@ function ContactDetails(props) {
     };
   }, []);
   useEffect(() => {
-    // console.log('props', props.route.params.contactInfo);
-    // let currentTimestamp = new Date(1648771200);
-    // let date = new Intl.DateTimeFormat('indian', {
-    //   year: 'numeric',
-    //   month: '2-digit',
-    //   day: '2-digit',
-    // }).format(currentTimestamp);
-    // console.log(date.getTime())
-    // console.log('formatted', contactInfos.length);
     getContactDetails();
-    // setContactInfo(props.route.params.contactInfo);
   }, []);
 
   useEffect(() => {
     if (contactfullInfo) {
       setContactInfo(contactfullInfo);
       setisLoading(false);
-      console.log(
-        'contact details-use effect',
-        contactfullInfo.contact_data.id,
-      );
     }
   }, [contactfullInfo]);
 
   useEffect(() => {
     if (deletedContact) {
-      console.log('Deleted Contact', deletedContact);
       setContactInfo('');
-      //Alert.alert('Contact deleted successfully');
       props.navigation.goBack();
-
-      //Toogle drawer not working......
-      // props.navigation.navigate('Contacts', {deleteContact: true}, {...props});
     }
   }, [deletedContact]);
 
   useEffect(() => {
     if (feedBackRes) {
-      console.log('feedBackRes', feedBackRes);
       Alert.alert(feedBackRes, '', [
         {
           text: 'OK',
@@ -138,7 +118,6 @@ function ContactDetails(props) {
 
   useEffect(() => {
     if (fetchedcampaignList) {
-      console.log('fetchedcampaignList', fetchedcampaignList);
       setcampaignList(fetchedcampaignList);
     }
   }, [fetchedcampaignList]);
@@ -168,7 +147,6 @@ function ContactDetails(props) {
         let token = data.token;
         let userId = data.user_id;
         let id = contactfullInfo.contact_data.id;
-        //console.log('id', contactfullInfo.contact_data.id);
         props.deleteContact({token, userId, id});
       });
     } catch (error) {
@@ -240,7 +218,6 @@ function ContactDetails(props) {
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           // Start downloading
           downloadFile(url);
-          console.log('Storage Permission Granted.');
         } else {
           // If permission denied then show alert
           Alert.alert('Error', 'Storage Permission Not Granted');
@@ -285,32 +262,12 @@ function ContactDetails(props) {
     userSavedData.then(data => {
        token = data.token;
     });
-
-    // let dirs = RNFetchBlob.fs.dirs
-// RNFetchBlob
-// .config({
-//   // response data will be saved to this path if it has access right.
-//   path : dirs.DocumentDir + '/path-to-file.csv'
-// })
-// .fetch('GET',FILE_URL,{Authorization:`Beader ${token}`})
-// .then((res) => {
-//   // the path should be dirs.DocumentDir + 'path-to-file.anything'
-//   console.log('The file saved to ', res.path())
-// })
-
     RNFetchBlob.fetch('GET',FILE_URL,{Authorization:`Beader ${token}`}).then((res)=>{
-      console.log('status>',res.info().status);
-      console.log('erspos>',res.base64());
-      console.log('path>',res.path());
-      console.log('text>',res.text());
-      console.log('json>',res.json());
       fs.writeFile(file_path, res.data, 'uri');
     })
     config(options)
       .fetch('GET', FILE_URL)
       .then(res => {
-        // Alert after successful downloading
-        console.log('res>',res);
         fs.writeFile(file_path, res.data, 'uri');
         Alert.alert('File Downloaded Successfully.', '', [
           {

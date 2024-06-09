@@ -4,7 +4,6 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  ActivityIndicator,
   StyleSheet,
   Image,
   Alert,
@@ -13,9 +12,7 @@ import {
   Platform,
   SafeAreaView,Switch
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
 import {connect} from 'react-redux';
-import MultiSelect from 'react-native-multiple-select';
 import { Dropdown } from 'react-native-element-dropdown';
 
 import {WidthPercent, HeightPercent} from '../Global/device';
@@ -733,7 +730,6 @@ const ContactEdit = props => {
         placeholder={"Choose Option"}
         selectedValue={userAllDetails.status}
         onChange={item => {
-          console.log('item////',item)
           {changeText('status', item);}
         }}
         />

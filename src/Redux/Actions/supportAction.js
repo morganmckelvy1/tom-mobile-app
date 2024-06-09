@@ -1,9 +1,8 @@
 import axios from 'axios';
 import {
-  CREATESUPPORTSUCCESS,
-} from './types';
+  ToastAndroid, Platform, AlertIOS
+} from 'react-native';
 import {BASEURL} from '../../Global/common';
-import {returnErrors, clearErrors} from './errorAction';
 
 export const supportMessage = (token,topic,message) => async dispatch => {
   try {
@@ -24,8 +23,11 @@ export const supportMessage = (token,topic,message) => async dispatch => {
       },
     );
     if (supportData) {
-      console.log('added support ',supportData.data);
-      
+      if (Platform.OS === 'android') {
+        ToastAndroid.show("Success", ToastAndroid.SHORT)
+      } else {
+        AlertIOS.alert("Success");
+      }
     }
   } catch (err) {
     console.log('support update err', err);

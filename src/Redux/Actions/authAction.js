@@ -1,7 +1,6 @@
 import axios from 'axios';
-import {Alert} from 'react-native';
+import {Alert, ToastAndroid, Platform, AlertIOS} from 'react-native';
 import {
-  LOGIN_FAIL,
   LOGIN_SUCCESS,
   CLEARAUTH,
   FORGOTPASSWORDRESETLINKSUCCESS,
@@ -44,6 +43,11 @@ export const LoginApi =
       };
       const userLogin = await axios.post(BASEURL + '/login', sendData);
       if (userLogin) {
+        if (Platform.OS === 'android') {
+          ToastAndroid.show("Success", ToastAndroid.SHORT)
+        } else {
+          AlertIOS.alert("Success");
+        }
         dispatch({
           type: LOGIN_SUCCESS,
           payload: userLogin.data.data,
@@ -51,6 +55,11 @@ export const LoginApi =
         dispatch(clearErrors());
       }
     } catch (err) {
+      if (Platform.OS === 'android') {
+        ToastAndroid.show(err.response.data.message, ToastAndroid.SHORT)
+      } else {
+        AlertIOS.alert(err.response.data.message);
+      }
       dispatch(
         returnErrors(
           err.response.data,
@@ -140,6 +149,7 @@ export const clearResetpasswordstatus = () => dispatch => {
 export const logoutAction =
   ({user_id}) =>
   async dispatch => {
+    console.log(user_id);
     try {
       const sendData = {
         user_id: user_id,

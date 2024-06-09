@@ -10,10 +10,9 @@ import {
   BackHandler,
   SafeAreaView,
   Platform,
+  StyleSheet
 } from 'react-native';
-import YoutubePlayer from 'react-native-youtube-iframe';
 import {connect} from 'react-redux';
-import LinearGradient from 'react-native-linear-gradient';
 import * as globalColor from '../Global/color';
 import {HeightPercent, WidthPercent} from '../Global/device';
 import {userDetails} from '../Global/userDetails';
@@ -28,8 +27,6 @@ import Header from '../Components/Header';
 import FieldView from '../Components/FieldView';
 import TomLoader from '../Components/tomLoader';
 
-import RNOtpVerify from 'react-native-otp-verify';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 const Profile = props => {
   const {UserprofileDetails, profileupdatestatus, error} = props;
@@ -181,12 +178,14 @@ const Profile = props => {
         <TomLoader />
       ) : !profileEditStatus ? (
         <>
+
           <View
             style={{
               flex: 1,
               backgroundColor: globalColor.NEWTHEME,
               paddingBottom: Platform.OS == 'android' ? HeightPercent(15) : null,
             }}>
+              
             <Header
               title={null}
               leftIcon={null}

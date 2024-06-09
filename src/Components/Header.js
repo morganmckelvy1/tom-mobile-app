@@ -8,7 +8,6 @@ import {
   Platform,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import * as globalColor from '../Global/color';
 import {HeightPercent, WidthPercent} from '../Global/device';
 

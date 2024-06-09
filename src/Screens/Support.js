@@ -46,15 +46,9 @@ const Support = props => {
         setTimeout(() => {
           setTopic('')
           setMessage('')
-          Alert.alert("Mail has been sent")
           if (supportSuccessStatus) {
             props.backPress();
-            //Alert("Feedback has been sent")
           }
-          else {
-            //Alert.alert('Error after api call');
-          }
-
         }, 1000);
       });
     } else {
