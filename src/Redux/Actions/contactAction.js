@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+  ToastAndroid, Platform, AlertIOS
+} from 'react-native';
+import {
   CAMPAIGNDOWNLOADSTATUS,
   CLEARCAMPAIGNDOWNLOADSTATUS,
   CLEARCREATECONTACTSTATUS,
@@ -177,6 +180,11 @@ export const createContact =
         },
       );
       if (createcontactData) {
+        if (Platform.OS === 'android') {
+          ToastAndroid.show("Success", ToastAndroid.SHORT)
+        } else {
+          AlertIOS.alert("Success");
+        }
         dispatch({
           type: CREATECONTACTSUCCESS,
           payload: createcontactData.data.data,
@@ -184,6 +192,11 @@ export const createContact =
         dispatch(clearErrors());
       }
     } catch (err) {
+      if (Platform.OS === 'android') {
+        ToastAndroid.show("Failed to add contact. Please try again", ToastAndroid.SHORT)
+      } else {
+        AlertIOS.alert("Failed to add contact. Please try again");
+      }
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -230,7 +243,11 @@ export const deleteContact =
         },
       );
       if (deletecontactData) {
-        //console.log('deleted contact ', deletecontactData);
+        if (Platform.OS === 'android') {
+          ToastAndroid.show("Success", ToastAndroid.SHORT)
+        } else {
+          AlertIOS.alert("Success");
+        }
         dispatch({
           type: DELETECONTACTSUCCESS,
           payload: deletecontactData.data.data,
@@ -238,6 +255,11 @@ export const deleteContact =
         dispatch(clearErrors());
       }
     } catch (err) {
+      if (Platform.OS === 'android') {
+        ToastAndroid.show("Failed to delete contact. Please try again", ToastAndroid.SHORT)
+      } else {
+        AlertIOS.alert("Failed to delete contact. Please try again");
+      }
       if (err.response.status == 401) {
         dispatch(
           returnErrors(
@@ -284,6 +306,11 @@ export const feedBack =
         },
       );
       if (feedBackData) {
+        if (Platform.OS === 'android') {
+          ToastAndroid.show("Success", ToastAndroid.SHORT)
+        } else {
+          AlertIOS.alert("Success");
+        }
         dispatch({
           type: FEEDBACKSTATUS,
           payload: feedBackData.data.data,
@@ -291,6 +318,11 @@ export const feedBack =
         dispatch(clearErrors());
       }
     } catch (err) {
+      if (Platform.OS === 'android') {
+        ToastAndroid.show("Failed to save feedback. Please try again", ToastAndroid.SHORT)
+      } else {
+        AlertIOS.alert("Failed to save feedback. Please try again");
+      }
       if (err.response.status == 401) {
         dispatch(
           returnErrors(

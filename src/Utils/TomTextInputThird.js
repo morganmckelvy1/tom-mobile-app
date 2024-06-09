@@ -15,44 +15,12 @@ import {HeightPercent, WidthPercent} from '../Global/device';
 
 const TomTextInputThird = props => {
 
-  const [pickerData, setpickerData] = useState(null);
-
-  const [cca2, setcca2] = useState('US'); 
-
    const phone = useRef();
   
-  const countryPicker = useRef();
 
   const checkDigits = ph => {
     ph.length > 14 ? alert('Enter valid Phone number') : null;
   };
-
-
-  useEffect(() => {
-    // setpickerData(phone.getPickerData())
-
-      // phone.getPickerData()
-
-    // console.log('picker data-----', getPickerData());
-
-  }, []);
-
-  const getPickerData =()=> {
-
-    console.log('get picker data called-----');
-    // countryPicker.openModal();
-  }
-
-    const onPressFlag =()=> {
-      countryPicker.openModal();
-    }
-
-
-const selectCountry =(country)=>{
-  console.log('country-----',country);
-
-  phone.selectCountry(country.iso2);
-}
 
 
   return (
@@ -76,7 +44,6 @@ const selectCountry =(country)=>{
             // onPressFlag={onPressFlag}
             initialValue={props.val}
             onChangePhoneNumber={text => {
-              console.log("text-----", text);
               checkDigits(text);
               props._onChangeText(props.name, text);
             }}

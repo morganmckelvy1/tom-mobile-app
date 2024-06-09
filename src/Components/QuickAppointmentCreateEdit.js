@@ -7,12 +7,10 @@ import {
   Alert,
   BackHandler,
   ScrollView,
-  Modal,
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
 import {connect} from 'react-redux';
-
 import Header from '../Components/Header';
 import * as globalColor from '../Global/color';
 import {HeightPercent, WidthPercent} from '../Global/device';
@@ -36,8 +34,6 @@ function QuickAppointmentCreateEdit(props) {
     searchedContacts,
     createappointSuccessStatus,
     editappointSuccessStatus,
-    contactData,
-    navigation,
   } = props;
 
   const [isLoading, setisLoading] = useState(true);

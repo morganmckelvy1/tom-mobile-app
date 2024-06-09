@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ActivityIndicator} from 'react-native';
+import { ActivityIndicator} from 'react-native';
 import * as globalColor from '../Global/color';
 
 function TomLoader() {

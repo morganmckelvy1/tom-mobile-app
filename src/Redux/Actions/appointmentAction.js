@@ -35,7 +35,6 @@ export const getAppointmentList =
     } catch (err) {
       if (err.response.status == 401) {
         dispatch(logoutAction({user_id}));
-
         dispatch(
           returnErrors(
             err.response.data,
