@@ -2,7 +2,7 @@ import axios from 'axios';
 import {Alert, ToastAndroid, Platform, AlertIOS} from 'react-native';
 import {
   LOGIN_SUCCESS,
-  CLEARAUTH,
+  CLEAR_AUTH,
   FORGOTPASSWORDRESETLINKSUCCESS,
   RESETPASSWORDSUCCESS,
   CLEARRESETLINK,
@@ -27,7 +27,7 @@ export const checkAuth = () => dispatch => {
 
 export const clearAuth = () => dispatch => {
   dispatch({
-    type: CLEARAUTH,
+    type: CLEAR_AUTH,
   });
 };
 export const LoginApi =
@@ -46,7 +46,7 @@ export const LoginApi =
         if (Platform.OS === 'android') {
           ToastAndroid.show("Success", ToastAndroid.SHORT)
         } else {
-          AlertIOS.alert("Success");
+          Alert.alert("Success");
         }
         dispatch({
           type: LOGIN_SUCCESS,
@@ -55,10 +55,11 @@ export const LoginApi =
         dispatch(clearErrors());
       }
     } catch (err) {
+      console.log(err);
       if (Platform.OS === 'android') {
         ToastAndroid.show(err.response.data.message, ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert(err.response.data.message);
+        Alert.alert(err.response.data.message);
       }
       dispatch(
         returnErrors(
@@ -90,7 +91,7 @@ export const forgotpasswordresetlink =
         dispatch(clearErrors());
       }
     } catch (err) {
-      Alert.alert( err.response.data.message)
+      Alert.alert(err.response.data.message)
       dispatch(
         returnErrors(
           err.response.data,

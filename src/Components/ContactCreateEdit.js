@@ -40,10 +40,7 @@ const typeList = [
  ];
 
 
-// const statusList = ['Choose Options', 'Active', 'Inactive'];
-
 const statusList = [
-  // { label: 'Choose Options', value: '1' },
   { label: 'Active', value: '1' },
   { label: 'Inactive', value: '2' },
 ];
@@ -57,7 +54,6 @@ const timeZoneList = [
   '60 min',
 ];
 
-var campaignList = [];
 
 const date = new Date();
 

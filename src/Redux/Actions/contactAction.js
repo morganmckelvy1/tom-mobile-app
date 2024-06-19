@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  ToastAndroid, Platform, AlertIOS
+  ToastAndroid, Platform, AlertIOS, Alert
 } from 'react-native';
 import {
   CAMPAIGNDOWNLOADSTATUS,
@@ -183,7 +183,7 @@ export const createContact =
         if (Platform.OS === 'android') {
           ToastAndroid.show("Success", ToastAndroid.SHORT)
         } else {
-          AlertIOS.alert("Success");
+          Alert.alert("Success");
         }
         dispatch({
           type: CREATECONTACTSUCCESS,
@@ -195,7 +195,7 @@ export const createContact =
       if (Platform.OS === 'android') {
         ToastAndroid.show("Failed to add contact. Please try again", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Failed to add contact. Please try again");
+        Alert.alert("Failed to add contact. Please try again");
       }
       if (err.response.status == 401) {
         dispatch(
@@ -246,7 +246,7 @@ export const deleteContact =
         if (Platform.OS === 'android') {
           ToastAndroid.show("Success", ToastAndroid.SHORT)
         } else {
-          AlertIOS.alert("Success");
+          Alert.alert("Success");
         }
         dispatch({
           type: DELETECONTACTSUCCESS,
@@ -258,7 +258,7 @@ export const deleteContact =
       if (Platform.OS === 'android') {
         ToastAndroid.show("Failed to delete contact. Please try again", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Failed to delete contact. Please try again");
+        Alert.alert("Failed to delete contact. Please try again");
       }
       if (err.response.status == 401) {
         dispatch(
@@ -309,7 +309,7 @@ export const feedBack =
         if (Platform.OS === 'android') {
           ToastAndroid.show("Success", ToastAndroid.SHORT)
         } else {
-          AlertIOS.alert("Success");
+          Alert.alert("Success");
         }
         dispatch({
           type: FEEDBACKSTATUS,
@@ -321,7 +321,7 @@ export const feedBack =
       if (Platform.OS === 'android') {
         ToastAndroid.show("Failed to save feedback. Please try again", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Failed to save feedback. Please try again");
+        Alert.alert("Failed to save feedback. Please try again");
       }
       if (err.response.status == 401) {
         dispatch(

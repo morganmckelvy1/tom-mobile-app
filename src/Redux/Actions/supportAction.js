@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  ToastAndroid, Platform, AlertIOS
+  ToastAndroid, Platform, AlertIOS, Alert
 } from 'react-native';
 import {BASEURL} from '../../Global/common';
 
@@ -26,7 +26,7 @@ export const supportMessage = (token,topic,message) => async dispatch => {
       if (Platform.OS === 'android') {
         ToastAndroid.show("Success", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Success");
+        Alert.alert("Success");
       }
     }
   } catch (err) {

@@ -9,7 +9,7 @@ import {
 import {BASEURL} from '../../Global/common';
 import {returnErrors,clearErrors} from './errorAction';
 import {logoutAction} from '../Actions/authAction';
-import { ToastAndroid, Platform, AlertIOS} from 'react-native';
+import { ToastAndroid, Platform, AlertIOS, Alert} from 'react-native';
 
 export const getProfileData =
   ({token,user_id}) =>
@@ -32,7 +32,7 @@ export const getProfileData =
       if (Platform.OS === 'android') {
         ToastAndroid.show("Failed to load profile information. Please try again", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Failed to load profile information. Please try again");
+        Alert.alert("Failed to load profile information. Please try again");
       }
       if (err?.response?.status == 401) {
         dispatch(logoutAction({user_id}))
@@ -67,7 +67,7 @@ export const updateProfileField =
         if (Platform.OS === 'android') {
           ToastAndroid.show("Success", ToastAndroid.SHORT)
         } else {
-          AlertIOS.alert("Success");
+          Alert.alert("Success");
         }
         if (singleFile) {
           dispatch(updateProfilePic(token, singleFile));
@@ -81,7 +81,7 @@ export const updateProfileField =
       if (Platform.OS === 'android') {
         ToastAndroid.show("Failed to update profile. Please try again", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Failed to update profile. Please try again");
+        Alert.alert("Failed to update profile. Please try again");
       }
       dispatch({
         type: PROFILE_UPDATE_FAILED,
@@ -108,7 +108,7 @@ export const updateProfilePic = (token, file) => async dispatch => {
       if (Platform.OS === 'android') {
         ToastAndroid.show("Success", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Success");
+        Alert.alert("Success");
       }
       dispatch({
         type: UPDATEPROFILEDATA,
@@ -118,7 +118,7 @@ export const updateProfilePic = (token, file) => async dispatch => {
     if (Platform.OS === 'android') {
       ToastAndroid.show("Failed to update profile picture. Please try again", ToastAndroid.SHORT)
     } else {
-      AlertIOS.alert("Failed to update profile picture. Please try again");
+      Alert.alert("Failed to update profile picture. Please try again");
     }
   }
 };
@@ -152,7 +152,7 @@ export const changePasswordAction =
         if (Platform.OS === 'android') {
           ToastAndroid.show("Success", ToastAndroid.SHORT)
         } else {
-          AlertIOS.alert("Success");
+          Alert.alert("Success");
         }
         dispatch({
           type: CHANGEPASSWORDSUCCESS,
@@ -163,7 +163,7 @@ export const changePasswordAction =
       if (Platform.OS === 'android') {
         ToastAndroid.show("Failed to update password. Please try again", ToastAndroid.SHORT)
       } else {
-        AlertIOS.alert("Failed to update password. Please try again");
+        Alert.alert("Failed to update password. Please try again");
       }
       dispatch(
         returnErrors(

@@ -155,15 +155,7 @@ const Profile = props => {
   const [playing, setPlaying] = useState(false);
 
   const togglePlaying = useCallback(() => {
-
          setPlaying((prev) => !prev);
-
-        //  console.log('toggle palying--------', playingVideo);
-
-        //  setplayingVideo({status: !playingVideo.status ,  
-        //   id: userAllDetails.video_tutorial.split('/')[4]
-        // }); 
-
     }, []);
 
 
@@ -183,7 +175,7 @@ const Profile = props => {
             style={{
               flex: 1,
               backgroundColor: globalColor.NEWTHEME,
-              paddingBottom: Platform.OS == 'android' ? HeightPercent(15) : null,
+              paddingBottom: Platform.OS == 'android' ? HeightPercent(15) : HeightPercent(10),
             }}>
               
             <Header
@@ -203,6 +195,8 @@ const Profile = props => {
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 alignItems: 'center',
+                width: '100%',
+                marginBottom:15
                 // padding: 10,
                 // marginLeft:WidthPercent(5)
                 // backgroundColor:'red',
@@ -246,64 +240,14 @@ const Profile = props => {
                   }}>
                   {userAllDetails.email}
                 </Text>
-
-
-                {/* <TouchableOpacity
-                  style={{
-                    backgroundColor: globalColor.WHITE,
-                    // height: HeightPercent(5),
-                    padding:
-                      Platform.OS == 'android'
-                        ? HeightPercent(1.2)
-                        : HeightPercent(1.5),
-                    width: WidthPercent(45),
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: WidthPercent(6),
-                    // marginVertical: 5,
-                    flexDirection:'row'
-                  }}
-                  onPress={() => {                       
-                    {console.log('playingVideo----------- ', playingVideo)}
-                    // if(playingVideo && playingVideo.status)                    
-                    setplayingVideo({...playingVideo, status: !playingVideo.status, id: userAllDetails.video_tutorial.split('/')[4]});                                
-                  }}
-                  // onPress={togglePlaying}
-                  >
-
-
-                   <Image style={{width:WidthPercent(3), height:HeightPercent(3), marginRight:WidthPercent(2)}} resizeMode={'contain'} 
-                     source={playingVideo.status? require('../Assests/Images/cross.png'): require('../Assests/Images/playButton.png')}
-                   /> 
-                  
-                  <Text style={{textAlign: 'center', color: globalColor.BLACK, fontSize:WidthPercent(3.2), fontWeight:'bold'}}>
-                    {playingVideo.status? 'CLOSE VIDEO' : 'TUTORIAL VIDEO'}
-                  </Text>
-                </TouchableOpacity> */}
               </View>
             </View>
           </View>
 
           
-          <View style={{flex: 3, backgroundColor:'#ccc', padding: HeightPercent(2)}}>
-            {/* {playingVideo.status? (
-              <View style={{flex: 1}}>
-
-                <YoutubePlayer
-                  height={HeightPercent(50)}
-                  play={playingVideo.status}                 
-                  videoId={playingVideo.id}
-                  // play={playing}
-                  // videoId={"kUWvv9yLKb8"}
-                  // onChangeState={onStateChange}
-                />
-              </View>
-            ) : ( */}
-
+          <View style={{flex: 3, backgroundColor:'#ccc', padding: HeightPercent(2) }}>
             <View  style={{height:HeightPercent(71), width:WidthPercent(95), alignSelf:'center',top:HeightPercent(-7), position:'absolute'}}>
-
               <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:globalColor.WHITE}}>
-
                 <FieldView
                   field={'ON CALL PHONE NUMBER'}
                   value={userAllDetails.oncall1}

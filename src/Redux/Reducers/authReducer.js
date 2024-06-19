@@ -1,6 +1,6 @@
 import {
   CHECKAUTH,
-  CLEARAUTH,
+  CLEAR_AUTH,
   CLEARRESETLINK,
   CLEARRESETPASSWORDSTATUS,
   FORGOTPASSWORDRESETLINKSUCCESS,
@@ -36,7 +36,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: false,
       };
-    case CLEARAUTH:
+    case CLEAR_AUTH:
       AsyncStorage.clear();
       return {
         ...state,

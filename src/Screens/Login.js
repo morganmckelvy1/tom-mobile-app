@@ -30,6 +30,7 @@ const Login = props => {
 
   useEffect(() => {
     if (error.id === 'LOGIN_FAIL' && !isAuthenticated) {
+      console.log(error.message);
       Alert.alert(error.message);
     }
   }, [error]);

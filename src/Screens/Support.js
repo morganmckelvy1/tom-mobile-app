@@ -95,7 +95,7 @@ const Support = props => {
             <TextInput
               placeholder="Subject"
               placeholderTextColor={globalColor.LIGHTGREY1}
-              style={{ fontSize: 14, marginTop: HeightPercent(2), paddingLeft: WidthPercent(3), borderWidth: 1, borderColor: globalColor.LIGHTGREY, borderRadius: WidthPercent(2) }}
+              style={{ fontSize: 14, paddingTop:10, marginTop: HeightPercent(2), height:40, paddingLeft: WidthPercent(3), borderWidth: 1, borderColor: globalColor.LIGHTGREY, borderRadius: WidthPercent(2) }}
               value={topic}
               multiline={true}
               onChangeText={text => {
